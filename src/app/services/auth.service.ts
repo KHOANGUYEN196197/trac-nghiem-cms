@@ -22,5 +22,8 @@ export class AuthService {
   register(resForm):  Observable<any>{
     return this.http.post(`/auth/signup`, resForm);
   }
+  abc(){
+    
+  }
 
 }
