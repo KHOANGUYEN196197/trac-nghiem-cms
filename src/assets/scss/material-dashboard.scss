@@ -61,4 +61,50 @@
     font-size: 20px;
     color: black;
     font-weight: 500;
+    margin-bottom: 15px;
 }
+.main-history {
+    margin: 15px 0px 6px 0px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 2px 6px #00000026;
+    border-radius: 10px;
+  }
+  .main-history .table-responsive .table thead {
+    box-shadow: 0px 2px 6px #00000026;
+  }
+  .main-history .table-responsive .table thead th {
+    color: #27384d;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 15px 0px 15px 25px;
+  }
+  .main-history .table-responsive .table tbody tr td {
+    padding: 15px 0px 15px 25px;
+  }
+  .table-status {
+    position: relative;
+    span {
+      font-size: 14px;
+      position: absolute;
+      top: 22px;
+      left: 0;
+    }
+  }
+  .table-action {
+    span {
+      margin: 0 5px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .icon-check {
+      background: #58dd72;
+      border-radius: 8px;
+    }
+    .icon-close {
+      background: #c0c8d3;
+      border-radius: 5px;
+    }
+    .icon-delete {
+      color: #ff66a5;
+    }
+  }

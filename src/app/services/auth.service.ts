@@ -22,8 +22,26 @@ export class AuthService {
   register(resForm):  Observable<any>{
     return this.http.post(`/auth/signup`, resForm);
   }
-  abc(){
-    
+  getSubject():  Observable<any>{
+    return this.http.get(`/subject?search=&limit=100&offset=0&order=id&direction=DESC` );
+  }
+  postSubject(formData): Observable<any>{
+    return this.http.post(`/subject`, formData);
+  }
+  editSubject(formData): Observable<any>{
+    return this.http.put(`/subject`, formData)
+  }
+  deleteSubject(id): Observable<any>{
+    return this.http.delete(`/subject/${id}`);
+  }
+  searchSubjct(search):Observable<any>{
+    return this.http.get(`/subject?search=${search}`);
+  }
+  getUser(): Observable<any>{
+    return this.http.get(`/user?search=&limit=100&offset=0&order=id&direction=DESC`);
+  }
+  deleteUser(id):Observable<any>{
+    return this.http.delete(`/user/${id}`);
   }
 
 }

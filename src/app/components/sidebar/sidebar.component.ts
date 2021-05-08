@@ -29,11 +29,42 @@ export const ROUTESUSER: RouteInfo[] = [
 ];
 export const ROUTESADMIN: RouteInfo[] = [
   {
+    path: "/InfoUserAdmin",
+    title: "Thông Tin User ",
+    icon: "dashboard",
+    class: "",
+  },
+  {
     path: "/Create-Test-Admin",
+    title: "Tạo Môn Thi ",
+    icon: "dashboard",
+    class: "",
+  },
+  {
+    path: "/CreateCategoryAdmin",
+    title: "Tạo Chương Môn Thi ",
+    icon: "dashboard",
+    class: "",
+  },
+  {
+    path: "/CreateQuestionAdmin",
     title: "Tạo Câu Hỏi ",
     icon: "dashboard",
     class: "",
   },
+  {
+    path: "/StatisticsAdmin",
+    title: " Thông Kê User",
+    icon: "dashboard",
+    class: "",
+  },
+  {
+    path: "/FeedbackAdmin",
+    title: "Xem Phản Hồi",
+    icon: "dashboard",
+    class: "",
+  },
+
 ];
 
 @Component({

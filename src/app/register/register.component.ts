@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
       "",
       [Validators.required, Validators.maxLength(100), Validators.minLength(5)],
     ],
-    numberPhone: [
+    phone: [
       "",
       [Validators.required],
     ],
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
       { type: "maxlength", message: "Mật Khẩu Quá Dài " },
       { type: "minlength", message: "Mật Khẩu Quá Ngắn " },
     ],
-    numberPhone: [
+    phone: [
       { type: "required", message: "Số Điện Thoại Không Được Để Trống" },
     ],
   };
@@ -48,8 +48,8 @@ export class RegisterComponent implements OnInit {
   get password() {
     return this.registrationForm.get("password");
   }
-  get numberPhone() {
-    return this.registrationForm.get("numberPhone");
+  get phone() {
+    return this.registrationForm.get("phone");
   }
   constructor(
     private formBuilder: FormBuilder,

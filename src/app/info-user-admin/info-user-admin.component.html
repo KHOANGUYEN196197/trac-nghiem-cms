@@ -1,0 +1,39 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="title">Thông Tin User</div>
+    <div class="main-history">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="">
+            <th>ID User</th>
+            <th>Họ Tên</th>
+            <th>Tên Đăng Nhập</th>
+            <th>Phân Quyền</th>
+            <th>Số Điện Thoại</th>
+            <th>Ngày Tạo</th>
+            <th>Hành Động</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td>{{ item.id }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.email }}</td>
+              <td class="table-status"><ng-container *ngIf="item.roleId ===1">Admin</ng-container> <ng-container *ngIf="item.roleId !=1">User</ng-container>
+              </td>
+              <td>{{ item.phone }}</td>
+              <td>{{ item.createdAt | date: "MM-dd-yyyy" }}</td>
+              <td class="table-action">
+                <span
+                  (click)="deleteAcount(item.id)"
+                  class="material-icons icon-delete"
+                >
+                  delete
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

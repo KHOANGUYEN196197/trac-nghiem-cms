@@ -44,7 +44,7 @@
             <div class="form-group">
               <label>Tên Đăng Nhập:</label>
               <input
-                [type]="hidePassword ? 'text' : 'password'"
+               
                 class="form-control"
                 autocapitalize
                 formControlName="email"
@@ -90,15 +90,15 @@
                   [type]="hidePassword ? 'text' : 'password'"
                   class="form-control"
                   autocapitalize
-                  formControlName="numberPhone"
+                  formControlName="phone"
                 />
               </div>
-              <div *ngFor="let error of errorMessages.numberPhone">
+              <div *ngFor="let error of errorMessages.phone">
                 <div
                   class="error-login"
                   *ngIf="
-                    numberPhone.hasError(error.type) &&
-                    (numberPhone.dirty || numberPhone.touched)
+                    phone.hasError(error.type) &&
+                    (phone.dirty || phone.touched)
                   "
                 >
                   <i class="error-message">{{ error.message }}</i>

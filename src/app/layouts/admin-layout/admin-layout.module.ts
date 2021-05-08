@@ -1,3 +1,9 @@
+import { ModalUpdateTestAdminComponent } from './../../create-test-admin/modal-update-test-admin/modal-update-test-admin.component';
+import { FeedbackAdminComponent } from './../../feedback-admin/feedback-admin.component';
+import { StatisticsAdminComponent } from './../../statistics-admin/statistics-admin.component';
+import { CreateQuestionAdminComponent } from './../../create-question-admin/create-question-admin.component';
+import { CreateCategoryAdminComponent } from './../../create-category-admin/create-category-admin.component';
+import { InfoUserAdminComponent } from './../../info-user-admin/info-user-admin.component';
 import { ModalCreateTestAdminComponent } from './../../create-test-admin/modal-create-test-admin/modal-create-test-admin.component';
 import { CreateTestAdminComponent } from './../../create-test-admin/create-test-admin.component';
 import { CountdownModule } from 'ngx-countdown';
@@ -64,7 +70,13 @@ import {MatRadioModule} from '@angular/material/radio';
     ModalEditSubjectComponent,
     ModalSeenSubjectComponent,
     CreateTestAdminComponent,
-    ModalCreateTestAdminComponent
+    ModalCreateTestAdminComponent,
+    InfoUserAdminComponent,
+    CreateCategoryAdminComponent,
+    CreateQuestionAdminComponent,
+    StatisticsAdminComponent,
+    FeedbackAdminComponent,
+    ModalUpdateTestAdminComponent,
 
   ],
 })

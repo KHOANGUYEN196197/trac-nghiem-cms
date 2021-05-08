@@ -1,145 +1,76 @@
-import { ModalCreateTestAdminComponent } from './modal-create-test-admin/modal-create-test-admin.component';
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-export interface PeriodicElement {
-  monThi: string;
-  maDe: number;
-  soCau: number;
-  thoiGianThi: string;
-  kienThuc: string;
-  doKho: string;
-  diem: string;
-  ngayThi: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    maDe: 1,
-    monThi: "Hydrogen",
-    soCau: 1.0079,
-    kienThuc: "H",
-    thoiGianThi: "H",
-    doKho: "H",
-    diem: "H",
-    ngayThi: "H",
-  },
-  {
-    maDe: 2,
-    monThi: "Helium",
-    soCau: 4.0026,
-    kienThuc: "He",
-    thoiGianThi: "H",
-    doKho: "H",
-    diem: "H",
-    ngayThi: "H",
-  },
-  {
-    maDe: 3,
-    monThi: "Lithium",
-    soCau: 6.941,
-    kienThuc: "Li",
-    thoiGianThi: "H",
-    doKho: "H",
-    diem: "H",
-    ngayThi: "H",
-  },
-  {
-    maDe: 4,
-    monThi: "Beryllium",
-    soCau: 9.0122,
-    kienThuc: "Be",
-    thoiGianThi: "H",
-    doKho: "H",
-    diem: "H",
-    ngayThi: "H",
-  },
-  {
-    maDe: 5,
-    monThi: "Boron",
-    soCau: 10.811,
-    kienThuc: "B",
-    thoiGianThi: "H",
-    doKho: "H",
-    diem: "H",
-    ngayThi: "H",
-  },
-  {
-    maDe: 6,
-    monThi: "Carbon",
-    soCau: 12.0107,
-    kienThuc: "C",
-    thoiGianThi: "H",
-    doKho: "H",
-    diem: "H",
-    ngayThi: "H",
-  },
-  {
-    maDe: 7,
-    monThi: "Nitrogen",
-    soCau: 14.0067,
-    kienThuc: "N",
-    thoiGianThi: "H",
-    doKho: "H",
-    diem: "H",
-    ngayThi: "H",
-  },
-  {
-    maDe: 8,
-    monThi: "Oxygen",
-    soCau: 15.9994,
-    kienThuc: "O",
-    thoiGianThi: "H",
-    doKho: "H",
-    diem: "H",
-    ngayThi: "H",
-  },
-  {
-    maDe: 9,
-    monThi: "Fluorine",
-    soCau: 18.9984,
-    kienThuc: "F",
-    thoiGianThi: "H",
-    doKho: "H",
-    diem: "H",
-    ngayThi: "H",
-  },
-  {
-    maDe: 10,
-    monThi: "Neon",
-    soCau: 20.1797,
-    kienThuc: "Ne",
-    thoiGianThi: "H",
-    doKho: "H",
-    diem: "H",
-    ngayThi: "H",
-  },
-];
+import { Observable } from 'rxjs';
+import { ModalUpdateTestAdminComponent } from "./modal-update-test-admin/modal-update-test-admin.component";
+import { AuthService } from "./../services/auth.service";
+import { ModalCreateTestAdminComponent } from "./modal-create-test-admin/modal-create-test-admin.component";
+import { Component, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import Swal from "sweetalert2";
+import { debounce } from "lodash";
 @Component({
-  selector: 'app-create-test-admin',
-  templateUrl: './create-test-admin.component.html',
-  styleUrls: ['./create-test-admin.component.scss']
+  selector: "app-create-test-admin",
+  templateUrl: "./create-test-admin.component.html",
+  styleUrls: ["./create-test-admin.component.scss"],
 })
 export class CreateTestAdminComponent implements OnInit {
-  type = false;
-  displayedColumns: string[] = [
-    "maDe",
-    "monThi",
-    "soCau",
-    "kienThuc",
-    "thoiGianThi",
-    "doKho",
-    "diem",
-    "ngayThi",
-  ];
-  dataSource = ELEMENT_DATA;
-  constructor(public dialog: MatDialog) {}
+  items;
+  searchSubject;
+  constructor(public dialog: MatDialog, private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getSubject();
+  }
   CreateSubject() {
     const dialogRef = this.dialog.open(ModalCreateTestAdminComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === undefined) {
+        this.getSubject();
+      }
     });
   }
-
+  editAdmin(item) {
+    const dialogRef = this.dialog.open(ModalUpdateTestAdminComponent);
+    dialogRef.componentInstance.data = item;
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === undefined) {
+        this.getSubject();
+      }
+    });
+  }
+  getSubject() {
+    this.authService.getSubject().subscribe((res) => {
+      this.items = res.result;
+    });
+  }
+  deleteSubject(id) {
+    Swal.fire({
+      title: "Xác Nhận Xóa Môn Học Này?",
+      showCancelButton: true,
+      confirmButtonText: `Xóa`,
+      cancelButtonText: "Hủy",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.authService.deleteSubject(id).subscribe((res) => {
+          this.getSubject();
+          Swal.fire({
+            icon: "success",
+            title: "Xóa thành công",
+            timer: 1500,
+            position: "center",
+            showConfirmButton: false,
+          });
+        });
+      }
+    });
+  }
+  modelChangedSearch = debounce((newObj) => {
+    this.searchSubject = newObj;
+    if (newObj == "") {
+      this.getSubject();
+    }else{
+      this.authService.searchSubjct(this.searchSubject).subscribe((res =>{
+        this.items = res.result;
+      }))
+    }
+  }, 500)
 }

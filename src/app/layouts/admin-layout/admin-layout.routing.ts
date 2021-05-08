@@ -1,3 +1,8 @@
+import { FeedbackAdminComponent } from './../../feedback-admin/feedback-admin.component';
+import { StatisticsAdminComponent } from './../../statistics-admin/statistics-admin.component';
+import { CreateQuestionAdminComponent } from './../../create-question-admin/create-question-admin.component';
+import { CreateCategoryAdminComponent } from './../../create-category-admin/create-category-admin.component';
+import { InfoUserAdminComponent } from './../../info-user-admin/info-user-admin.component';
 import { CreateTestAdminComponent } from './../../create-test-admin/create-test-admin.component';
 import { ModalEditSubjectComponent } from './../../create-subject/modal-edit-subject/modal-edit-subject.component';
 import { ModalSeenSubjectComponent } from './../../create-subject/modal-seen-subject/modal-seen-subject.component';
@@ -27,6 +32,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'Seen-Subjetc',      component: ModalSeenSubjectComponent },
     { path: 'Update-Subjetc',      component: ModalEditSubjectComponent },
     { path: 'Create-Test-Admin',      component: CreateTestAdminComponent },
+    { path: 'InfoUserAdmin',      component: InfoUserAdminComponent },
+    { path: 'CreateCategoryAdmin',      component: CreateCategoryAdminComponent },
+    { path: 'CreateQuestionAdmin',      component: CreateQuestionAdminComponent },
+    { path: 'StatisticsAdmin',      component: StatisticsAdminComponent },
+    { path: 'FeedbackAdmin',      component: FeedbackAdminComponent },
 
 
 ];

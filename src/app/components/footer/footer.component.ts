@@ -7,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   test : Date = new Date();
+  isAdmin;
+
   
-  constructor() { }
+  constructor() { 
+this.isAdmin = localStorage.getItem('Role')
+  }
 
   ngOnInit() {
   }

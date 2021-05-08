@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
             this.toastr.successToastr("Xin Chào " + decoded.name, null, {
               toastTimeout: 2000,
             });
-            this.router.navigate(["/Create-Test-Admin"]);
+            this.router.navigate(["/InfoUserAdmin"]);
           } else if (decoded.role === "user") {
             localStorage.setItem("token", res.result.token);
             const token = localStorage.getItem("token");
