@@ -1,0 +1,88 @@
+<div class="login-wrapper">
+  <div class="login-box">
+    <div class="login">
+      <div class="login-box1">
+        <div>
+          <div class="img-color"></div>
+          <!-- <img
+            src="../../assets/img/img-login.svg"
+            style="width: 500px; height: 500px"
+          /> -->
+        </div>
+      </div>
+      <div class="login-box2">
+        <div
+          style="
+            font-size: 45px;
+            color: #ffbc6f;
+            margin: 50px 0;
+            font-weight: 500;
+          "
+        >
+          Đăng Nhập
+        </div>
+        <form [formGroup]="registrationForm" (ngSubmit)="login()">
+          <div class="form-group">
+            <label>Tên Đăng Nhập:</label>
+            <input
+              class="form-control"
+              autocapitalize
+              inputmode="text"
+              formControlName="email"
+            />
+          </div>
+          <div *ngFor="let error of errorMessages.email">
+            <div
+              class="error-login"
+              *ngIf="
+                email.hasError(error.type) && (email.dirty || email.touched)
+              "
+            >
+              <i class="error-message">{{ error.message }}</i>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Mật Khẩu:</label>
+            <input
+              [type]="hidePassword ? 'text' : 'password'"
+              class="form-control"
+              autocapitalize
+              formControlName="password"
+            />
+            <span (click)="hidePassword = !hidePassword" class="material-icons">
+              {{ hidePassword ? "visibility" : "visibility_off" }}
+            </span>
+          </div>
+          <div *ngFor="let error of errorMessages.password">
+            <div
+              class="error-login"
+              *ngIf="
+                password.hasError(error.type) &&
+                (password.dirty || password.touched)
+              "
+            >
+              <i class="error-message">{{ error.message }}</i>
+            </div>
+          </div>
+          <div class="login-recover">
+            <!-- <label>Recover Password</label> -->
+          </div>
+          <div class="login-box-btn">
+            <button
+              [disabled]="!registrationForm.valid"
+              expand="block"
+              type="submit"
+              class="login-btn"
+            >
+              Đăng Nhập
+            </button>
+          </div>
+        </form>
+        <div class="c13">
+          <span (click)="register()">Đăng Ký Tài Khoản</span>
+          <span (click)="resetPassword()">Quên Mật Khẩu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

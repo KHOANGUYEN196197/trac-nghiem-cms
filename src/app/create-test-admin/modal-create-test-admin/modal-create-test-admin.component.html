@@ -1,0 +1,70 @@
+<div class="box-create">
+    <div class="box-title">
+      <h1 mat-dialog-title>Tạo Câu Hỏi</h1>
+    </div>
+    <div class="box-content">
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Chọn Môn Thi</mat-label>
+            <mat-select>
+              <mat-option value="one">Toán</mat-option>
+              <mat-option value="two">Lý</mat-option>
+              <mat-option value="two">Lý</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Chọn Mức Độ</mat-label>
+            <mat-select>
+              <mat-option value="one">Dễ</mat-option>
+              <mat-option value="two">Trung Bình</mat-option>
+              <mat-option value="one">Khó</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Chọn Số Câu Hỏi</mat-label>
+            <mat-select>
+              <mat-option value="one">10 Câu</mat-option>
+              <mat-option value="two">20 Câu</mat-option>
+              <mat-option value="one">30 Câu</mat-option>
+              <mat-option value="two">40 Câu</mat-option>
+              <mat-option value="one">50 Câu</mat-option>
+              <mat-option value="two">60 Câu</mat-option>
+              <mat-option value="one">70 Câu</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Chọn Thời Gian Làm Bài</mat-label>
+            <mat-select>
+              <mat-option value="one">10 Phút</mat-option>
+              <mat-option value="two">20 Phút</mat-option>
+              <mat-option value="one">30 Phút</mat-option>
+              <mat-option value="two">40 Phút</mat-option>
+              <mat-option value="one">50 Phút</mat-option>
+              <mat-option value="two">60 Phút</mat-option>
+              <mat-option value="one">70 Phút</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12">
+          <mat-form-field appearance="fill">
+            <mat-label>Toppings</mat-label>
+            <mat-select [formControl]="toppings" multiple>
+              <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-dialog-actions align="end">
+    <button (click)="openSubject()" mat-raised-button color="primary">Tạo</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="true">Hủy</button>
+  </mat-dialog-actions>
+  

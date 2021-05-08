@@ -1,0 +1,117 @@
+.main-content {
+  .container-fluid {
+    .banner {
+      background-image: url(../../assets/img/doAn/banner.png);
+      min-height: 360px;
+      background-size: cover;
+      text-align: center;
+      padding-top: 70px;
+      width: 100%;
+      .title {
+        h1 {
+          color: white;
+        }
+        p {
+          color: white;
+        }
+      }
+    }
+    .box-wraper {
+      text-align: center;
+      box-shadow: 0 7px 15px 0 rgb(58 75 205 / 33%);
+      border-radius: 8px;
+      background-color: #ffffff;
+      padding: 20px;
+      position: relative;
+      top: -48px;
+      .box {
+        margin-bottom: 15px;
+        img {
+          width: 110px;
+          height: 90px;
+          margin-bottom: 20px;
+        }
+        .title {
+          margin-bottom: 15px;
+          font-size: 20px;
+          line-height: 1.1;
+          font-weight: 800;
+          color: #0c0c0c;
+          text-transform: uppercase;
+          margin-top: 20px;
+        }
+        .content {
+          font-size: 14px;
+          line-height: 1.1;
+          font-weight: 400;
+          color: #3a3a3a;
+          padding: 12px 22px 24px;
+        }
+      }
+    }
+  }
+}
+.box-2 {
+  .title {
+    font-size: 20px;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .box-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .content1 {
+      width: 33.33333333333333%;
+      position: relative;
+      .none1{
+        &::after{
+          display: none;
+        }
+      }
+      .box-img {
+        text-align: center;
+        position: relative;
+        &::after{
+          position: absolute;
+          content: "";
+          width: 113px;
+          height: 7px;
+          background-color: #3acda5;
+          border-radius: 5px;
+          top: 76px;
+          right: -55px;
+        }
+        div {
+          width: 160px;
+          margin: auto;
+          height: 160px;
+          position: relative;
+          transform: rotate(45deg);
+          border-radius: 15px;
+          background-color: #3acda5;
+          span {
+            position: absolute;
+            left: 0;
+            right: -1px;
+            bottom: 31px;
+            font-size: 99px;
+            transform: rotate(
+        -45deg
+        );
+            color: white;
+          }
+        }
+      }
+      h2 {
+        margin-top: 35px;
+        text-align: center;
+      }
+      p {
+        text-align: center;
+      }
+    }
+  }
+}

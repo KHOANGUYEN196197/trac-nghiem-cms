@@ -1,0 +1,33 @@
+.box-timer {
+    text-align: center;
+    .count-down {
+      font-size: 28px;
+      color: rgb(234, 67, 53);
+    }
+    .box-2 {
+      flex-wrap: wrap;
+      display: flex;
+      margin-top: 15px;
+      .active {
+        background: #005affe0 !important;
+        border: 1px solid #005affe0 !important;
+        color: white !important;
+      }
+      .box-span {
+          font-weight: 500;
+        color: black;
+        padding: 0 8px;
+        background: #ffffff;
+        border: 1px solid #005affe0;
+        border-radius: 50%;
+        margin: 5px;
+        box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+          0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+      }
+    }
+  }
+  .box-btn {
+    margin-top: 15px;
+    text-align: center;
+  }
+  

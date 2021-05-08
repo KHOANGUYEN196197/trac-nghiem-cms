@@ -1,0 +1,78 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="title">Tạo Câu Hỏi</div>
+      <button mat-raised-button color="primary" class="mb-2" (click)="CreateSubject()">Tạo Câu Hỏi</button>
+      <div class="action">
+        <div class="action-1">
+          <mat-form-field class="example-full-width">
+            <mat-label>Tìm Kiếm</mat-label>
+            <input matInput placeholder="Nhập Kết Quả" />
+          </mat-form-field>
+        </div>
+        <div class="action-2">
+          <div class="action-2-1">
+            <mat-form-field appearance="fill">
+              <mat-label>Lọc</mat-label>
+              <select matNativeControl required>
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+              </select>
+            </mat-form-field>
+          </div>
+          <div class="action-2-2">
+
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <table
+          style="width: 100%"
+          mat-table
+          [dataSource]="dataSource"
+          class="mat-elevation-z8"
+        >
+          <ng-container matColumnDef="maDe">
+            <th mat-header-cell *matHeaderCellDef>Mã Đề</th>
+            <td mat-cell *matCellDef="let element">{{ element.maDe }}</td>
+          </ng-container>
+          <ng-container matColumnDef="monThi">
+            <th mat-header-cell *matHeaderCellDef>Môn Thi</th>
+            <td mat-cell *matCellDef="let element">{{ element.monThi }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="soCau">
+            <th mat-header-cell *matHeaderCellDef>Số Câu</th>
+            <td mat-cell *matCellDef="let element">{{ element.soCau }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="kienThuc">
+            <th mat-header-cell *matHeaderCellDef>Kiến Thức</th>
+            <td mat-cell *matCellDef="let element">{{ element.kienThuc }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="thoiGianThi">
+            <th mat-header-cell *matHeaderCellDef>Thời Gian Thi</th>
+            <td mat-cell *matCellDef="let element">{{ element.thoiGianThi }}</td>
+          </ng-container>
+          <ng-container matColumnDef="doKho">
+            <th mat-header-cell *matHeaderCellDef>Độ Khó</th>
+            <td mat-cell *matCellDef="let element">{{ element.doKho }}</td>
+          </ng-container>
+          <ng-container matColumnDef="diem">
+            <th mat-header-cell *matHeaderCellDef>Điểm</th>
+            <td mat-cell *matCellDef="let element">{{ element.diem }}</td>
+          </ng-container>
+          <ng-container matColumnDef="ngayThi">
+            <th mat-header-cell *matHeaderCellDef>Ngày Thi</th>
+            <td mat-cell *matCellDef="let element">{{ element.ngayThi }}</td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  

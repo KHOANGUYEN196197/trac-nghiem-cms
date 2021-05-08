@@ -1,0 +1,31 @@
+.action{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .action-1{
+
+    }
+    .action-2{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .action-2-1{
+
+        }
+        .action-2-2{
+
+        }
+    }
+}
+.mr-15{
+    margin: 0 15px;
+}
+.cu{
+    cursor: pointer;
+    &:hover{
+        color: #f44336;
+    }
+}
+.active2{
+    color: #f44336;
+}

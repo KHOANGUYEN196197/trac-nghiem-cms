@@ -1,0 +1,21 @@
+.c12 {
+  position: relative;
+  &:hover {
+    .box-acount {
+      display: block;
+    }
+  }
+  .box-acount {
+    display: none;
+    position: absolute;
+    box-shadow: 0 7px 15px 0 rgb(58 75 205 / 33%);
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 15px;
+    width: 150px;
+    left: -31px;
+    div {
+      cursor: pointer;
+    }
+  }
+}
