@@ -1,0 +1,20 @@
+<div class="box-create">
+    <div class="box-title">
+      <h1 mat-dialog-title>Cập Nhập Môn Thi</h1>
+    </div>
+    <div class="box-content">
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field class="example-full-width">
+            <mat-label>Nhập Tên Môn</mat-label>
+            <input [(ngModel)]="data.name" name="nameSubject" matInput placeholder="Ex. Toán" >
+          </mat-form-field>
+        </div>
+        </div>
+      </div>
+    </div>
+
+  <mat-dialog-actions align="end">
+    <button (click)="editSubject()" mat-raised-button color="primary">Cập Nhập</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="true">Hủy</button>
+  </mat-dialog-actions>
