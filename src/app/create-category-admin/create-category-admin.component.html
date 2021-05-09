@@ -1,1 +1,46 @@
-<p>create-category-admin works!</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="title">Thông Tin Chương Môn Học</div>
+    <button mat-raised-button color="primary" class="mb-2" (click)="CreateCategory()">Tạo Chương</button>
+
+    <div class="title-2" style="text-align: center; font-size: 25px">
+      Chương Môn Toán
+    </div>
+
+    <div class="main-history">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="">
+            <th>ID</th>
+            <th>Tên Chương</th>
+            <th>Môn</th>
+            <th>Ngày Tạo</th>
+            <th>Hành Động</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of items">
+              <td>{{item.id}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.subjectId}}</td>
+              <td>{{item.createdAt}}</td>
+              <td class="table-action">
+                <span
+                (click)="editCategory(item)"
+                class="material-icons icon-delete"
+              >
+              mode_edit
+              </span>
+                <span
+                  (click)="deleteCategory(item.id)"
+                  class="material-icons icon-delete"
+                >
+                  delete
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

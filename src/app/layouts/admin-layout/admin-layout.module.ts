@@ -1,3 +1,5 @@
+import { ModalUpdateCategoryAdminComponent } from './../../create-category-admin/modal-update-category-admin/modal-update-category-admin.component';
+import { ModalCreateCategoryAdminComponent } from './../../create-category-admin/modal-create-category-admin/modal-create-category-admin.component';
 import { ModalUpdateTestAdminComponent } from './../../create-test-admin/modal-update-test-admin/modal-update-test-admin.component';
 import { FeedbackAdminComponent } from './../../feedback-admin/feedback-admin.component';
 import { StatisticsAdminComponent } from './../../statistics-admin/statistics-admin.component';
@@ -77,6 +79,8 @@ import {MatRadioModule} from '@angular/material/radio';
     StatisticsAdminComponent,
     FeedbackAdminComponent,
     ModalUpdateTestAdminComponent,
+    ModalCreateCategoryAdminComponent,
+    ModalUpdateCategoryAdminComponent,
 
   ],
 })
