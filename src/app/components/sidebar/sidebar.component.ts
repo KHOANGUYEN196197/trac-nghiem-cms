@@ -9,21 +9,21 @@ declare interface RouteInfo {
 }
 export const ROUTESUSER: RouteInfo[] = [
   { path: "/dashboard", title: "Dashboard", icon: "dashboard", class: "" },
-  { path: "/CreateSubject", title: "Tạo Đề Thi", icon: "dashboard", class: "" },
+  { path: "/CreateSubject", title: "Tạo Đề Thi", icon: "subject", class: "" },
   {
     path: "/LearningInformation",
     title: "Thông tin học tập",
-    icon: "dashboard",
+    icon: "info",
     class: "",
   },
   {
     path: "/ResultEvaluation",
     title: "Đánh giá kết quả",
-    icon: "dashboard",
+    icon: "spellcheck",
     class: "",
   },
-  { path: "/Feedback", title: "Phản hồi", icon: "dashboard", class: "" },
-  { path: "/Statistics", title: "Thống kê", icon: "dashboard", class: "" },
+  { path: "/Feedback", title: "Phản hồi", icon: "feedback", class: "" },
+  { path: "/Statistics", title: "Thống kê", icon: "waterfall_chart", class: "" },
   // { path: "/Evaluate", title: "Đánh giá", icon: "dashboard", class: "" },
   // { path: "/InfoUser", title: "Thông Tin user ", icon: "dashboard", class: "" },
 ];
@@ -31,37 +31,37 @@ export const ROUTESADMIN: RouteInfo[] = [
   {
     path: "/InfoUserAdmin",
     title: "Thông Tin User ",
-    icon: "dashboard",
+    icon: "info",
     class: "",
   },
   {
     path: "/Create-Test-Admin",
     title: "Tạo Môn Thi ",
-    icon: "dashboard",
+    icon: "subject",
     class: "",
   },
   {
     path: "/CreateCategoryAdmin",
     title: "Tạo Chương Môn Thi ",
-    icon: "dashboard",
+    icon: "bookmarks",
     class: "",
   },
   {
     path: "/CreateQuestionAdmin",
     title: "Tạo Câu Hỏi ",
-    icon: "dashboard",
+    icon: "question_answer",
     class: "",
   },
   {
     path: "/StatisticsAdmin",
     title: " Thông Kê User",
-    icon: "dashboard",
+    icon: "waterfall_chart",
     class: "",
   },
   {
     path: "/FeedbackAdmin",
     title: "Xem Phản Hồi",
-    icon: "dashboard",
+    icon: "feedback",
     class: "",
   },
 
@@ -73,10 +73,12 @@ export const ROUTESADMIN: RouteInfo[] = [
   styleUrls: ["./sidebar.component.css"],
 })
 export class SidebarComponent implements OnInit {
+  isAdmin;
   checkToken: any;
   menuItems: any[];
 
   constructor(private router: Router) {
+    this.isAdmin = localStorage.getItem("Role");
     this.checkToken = localStorage.getItem("token");
     if (this.checkToken !== null) {
     } else {

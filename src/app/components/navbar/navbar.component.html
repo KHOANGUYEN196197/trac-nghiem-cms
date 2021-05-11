@@ -16,7 +16,7 @@
                         <span>{{name ? name : 'NoName'}}</span>
                     </a>
                     <div class="box-acount">
-                        <div style="margin-bottom: 12px;">Thông Tin User</div>
+                        <div *ngIf="isAdmin ==='user'" style="margin-bottom: 12px;">Thông Tin User</div>
                         <div (click)="logout()">Đăng Xuất</div>
                     </div>
                 </li>

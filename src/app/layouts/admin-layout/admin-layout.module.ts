@@ -1,3 +1,5 @@
+import { ModalUpdateQuestionAdminComponent } from './../../create-question-admin/modal-update-question-admin/modal-update-question-admin.component';
+import { ModalCreateQuestionAdminComponent } from './../../create-question-admin/modal-create-question-admin/modal-create-question-admin.component';
 import { ModalUpdateCategoryAdminComponent } from './../../create-category-admin/modal-update-category-admin/modal-update-category-admin.component';
 import { ModalCreateCategoryAdminComponent } from './../../create-category-admin/modal-create-category-admin/modal-create-category-admin.component';
 import { ModalUpdateTestAdminComponent } from './../../create-test-admin/modal-update-test-admin/modal-update-test-admin.component';
@@ -81,6 +83,8 @@ import {MatRadioModule} from '@angular/material/radio';
     ModalUpdateTestAdminComponent,
     ModalCreateCategoryAdminComponent,
     ModalUpdateCategoryAdminComponent,
+    ModalCreateQuestionAdminComponent,
+    ModalUpdateQuestionAdminComponent,
 
   ],
 })

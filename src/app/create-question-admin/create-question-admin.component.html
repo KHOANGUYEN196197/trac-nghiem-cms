@@ -1,1 +1,44 @@
-<p>create-question-admin works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="title">Thông Tin User</div>
+      <button mat-raised-button color="primary" class="mb-2" (click)="Createquestion()">Tạo Môn Thi</button>
+      <div class="main-history">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="">
+              <th>ID User</th>
+              <th>Họ Tên</th>
+              <th>Tên Đăng Nhập</th>
+              <th>Phân Quyền</th>
+              <th>Số Điện Thoại</th>
+              <th>Ngày Tạo</th>
+              <th>Hành Động</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of items">
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.phone }}</td>
+                <td class="table-action">
+                    <span
+                    (click)="editQuestion(item)"
+                    class="material-icons icon-delete"
+                  >
+                  mode_edit
+                  </span>
+                  <span
+                    (click)="deleteAcount(item.id)"
+                    class="material-icons icon-delete"
+                  >
+                    delete
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

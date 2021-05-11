@@ -12,50 +12,65 @@ interface Location {
 export class AuthService {
   logId;
   url = environment.apiUrl;
-  
-  constructor(private http: HttpClient) {
-  }
-//login
+
+  constructor(private http: HttpClient) {}
+  //login
   login(loginForm): Observable<any> {
-      return this.http.post(`/auth/login`, loginForm);
+    return this.http.post(`/auth/login`, loginForm);
   }
-  register(resForm):  Observable<any>{
+  register(resForm): Observable<any> {
     return this.http.post(`/auth/signup`, resForm);
   }
   //subject
-  getSubject():  Observable<any>{
-    return this.http.get(`/subject?search=&limit=100&offset=0&order=id&direction=DESC` );
+  getSubject(): Observable<any> {
+    return this.http.get(
+      `/subject?search=&limit=100&offset=0&order=id&direction=DESC`
+    );
   }
-  postSubject(formData): Observable<any>{
+  postSubject(formData): Observable<any> {
     return this.http.post(`/subject`, formData);
   }
-  editSubject(formData): Observable<any>{
-    return this.http.put(`/subject`, formData)
+  editSubject(formData): Observable<any> {
+    return this.http.put(`/subject`, formData);
   }
-  deleteSubject(id): Observable<any>{
+  deleteSubject(id): Observable<any> {
     return this.http.delete(`/subject/${id}`);
   }
-  searchSubjct(search):Observable<any>{
+  searchSubjct(search): Observable<any> {
     return this.http.get(`/subject?search=${search}`);
   }
   //user
-  getUser(): Observable<any>{
-    return this.http.get(`/user?search=&limit=100&offset=0&order=id&direction=DESC`);
+  getUser(): Observable<any> {
+    return this.http.get(
+      `/user?search=&limit=100&offset=0&order=id&direction=DESC`
+    );
   }
-  deleteUser(id):Observable<any>{
+  deleteUser(id): Observable<any> {
     return this.http.delete(`/user/${id}`);
   }
   //category
-  getCategory(): Observable<any>{
-return this.http.get(`/category?search=&limit=1000&offset=0&order=subjectId&direction=DESC`);
+  getCategory(): Observable<any> {
+    return this.http.get(
+      `/category?search=&limit=1000&offset=0&order=subjectId&direction=DESC`
+    );
   }
-  postCategory(formData): Observable<any>{
-    return this.http.post(`/category`, formData)
+  getCategoryByIdSubject(id): Observable<any>{
+    return this.http.get(`/category?search=&limit=1000&offset=0&order=id&direction=DESC&subjectId=${id}`)
   }
-updateCategory(formData): Observable<any>{
-  return this.http.put(`/category`, formData)
-}
-deleteCategory(id): Observable<any>{
-  return this.http.delete(`/category/${id}`);
-}
+  postCategory(formData): Observable<any> {
+    return this.http.post(`/category`, formData);
+  }
+  updateCategory(formData): Observable<any> {
+    return this.http.put(`/category`, formData);
+  }
+  deleteCategory(id): Observable<any> {
+    return this.http.delete(`/category/${id}`);
+  }
+  //feedback
+  getFeedback(): Observable<any> {
+    return this.http.get(`/feedback`);
+  }
+  deleteFeedback(id): Observable<any> {
+    return this.http.delete(`/feedback/${id}`);
+  }
 }

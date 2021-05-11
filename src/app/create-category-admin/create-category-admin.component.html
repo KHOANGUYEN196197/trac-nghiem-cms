@@ -1,12 +1,34 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="title">Thông Tin Chương Môn Học</div>
-    <button mat-raised-button color="primary" class="mb-2" (click)="CreateCategory()">Tạo Chương</button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="mb-2"
+      (click)="CreateCategory()"
+    >
+      Tạo Chương
+    </button>
 
+    <div class="row">
+      <div class="col-md-8"></div>
+      <div class="col-md-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Chọn Môn</mat-label>
+          <mat-select  [(ngModel)]="subject">
+            <mat-option
+            (click)="selectSubject(subject.id)"
+              *ngFor="let subject of subjects"
+              value="{{ subject.id }}"
+              >{{ subject.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
     <div class="title-2" style="text-align: center; font-size: 25px">
       Chương Môn Toán
     </div>
-
     <div class="main-history">
       <div class="table-responsive">
         <table class="table table-hover">
@@ -19,17 +41,17 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of items">
-              <td>{{item.id}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.subjectId}}</td>
-              <td>{{item.createdAt}}</td>
+              <td>{{ item.id }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.subject.name }}</td>
+              <td>{{ item.createdAt }}</td>
               <td class="table-action">
                 <span
-                (click)="editCategory(item)"
-                class="material-icons icon-delete"
-              >
-              mode_edit
-              </span>
+                  (click)="editCategory(item)"
+                  class="material-icons icon-delete"
+                >
+                  mode_edit
+                </span>
                 <span
                   (click)="deleteCategory(item.id)"
                   class="material-icons icon-delete"

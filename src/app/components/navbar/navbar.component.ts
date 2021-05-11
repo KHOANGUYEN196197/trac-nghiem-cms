@@ -15,6 +15,7 @@ import { ToastrManager } from "ng6-toastr-notifications";
 })
 export class NavbarComponent implements OnInit {
   name;
+  isAdmin;
   private listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
@@ -27,6 +28,7 @@ export class NavbarComponent implements OnInit {
     private element: ElementRef,
     private router: Router
   ) {
+    this.isAdmin = localStorage.getItem("Role");
     this.location = location;
     this.sidebarVisible = false;
   }
