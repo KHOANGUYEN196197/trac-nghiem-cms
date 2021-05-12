@@ -54,8 +54,10 @@ export class AuthService {
       `/category?search=&limit=1000&offset=0&order=subjectId&direction=DESC`
     );
   }
-  getCategoryByIdSubject(id): Observable<any>{
-    return this.http.get(`/category?search=&limit=1000&offset=0&order=id&direction=DESC&subjectId=${id}`)
+  getCategoryByIdSubject(id): Observable<any> {
+    return this.http.get(
+      `/category?search=&limit=1000&offset=0&order=id&direction=DESC&subjectId=${id}`
+    );
   }
   postCategory(formData): Observable<any> {
     return this.http.post(`/category`, formData);
@@ -72,5 +74,8 @@ export class AuthService {
   }
   deleteFeedback(id): Observable<any> {
     return this.http.delete(`/feedback/${id}`);
+  }
+  getLevel(): Observable<any> {
+    return this.http.get(`/level`);
   }
 }

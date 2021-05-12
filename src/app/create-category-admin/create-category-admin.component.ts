@@ -10,6 +10,7 @@ import { AuthService } from "./../services/auth.service";
   styleUrls: ["./create-category-admin.component.css"],
 })
 export class CreateCategoryAdminComponent implements OnInit {
+  titleSubject;
   items = [];
   subjects = [];
   subject;
@@ -30,8 +31,9 @@ export class CreateCategoryAdminComponent implements OnInit {
       this.items = res.result;
     });
   }
-  selectSubject(id){
-    this.authService.getCategoryByIdSubject(id).subscribe((res =>{
+  selectSubject(subject){
+    this.titleSubject=subject.name
+    this.authService.getCategoryByIdSubject(subject.id).subscribe((res =>{
       this.items = res.result;      
     }))
     

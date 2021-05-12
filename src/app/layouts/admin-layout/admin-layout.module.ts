@@ -40,6 +40,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatDialogModule } from "@angular/material/dialog";
 import { NgSelectModule } from '@ng-select/ng-select';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 @NgModule({
   imports: [
     CommonModule,
@@ -58,6 +59,7 @@ import {MatRadioModule} from '@angular/material/radio';
     NgSelectModule,
     MatRadioModule,
     CountdownModule,
+    MatSlideToggleModule
   ],
   declarations: [
     DashboardComponent,
