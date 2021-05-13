@@ -78,4 +78,16 @@ export class AuthService {
   getLevel(): Observable<any> {
     return this.http.get(`/level`);
   }
+  postQuestion(formData): Observable<any>{
+    return this.http.post(`/question`,formData);
+  }
+  postAnswer(formData): Observable<any>{
+    return this.http.post(`/answer`, formData);
+  }
+  getQuestion(): Observable<any>{
+    return this.http.get(`/question?search=&limit=1000&offset=0&order=id&direction=DESC&categoryId=1`);
+  }
+  seenAsnwer(id):Observable<any>{
+    return this.http.get(`/answer?search=&limit=10&offset=0&order=id&direction=DESC&questionId=${id}`)
+  }
 }

@@ -1,3 +1,4 @@
+import { SeenAnswerComponent } from './../../create-question-admin/seen-answer/seen-answer.component';
 import { ModalUpdateQuestionAdminComponent } from './../../create-question-admin/modal-update-question-admin/modal-update-question-admin.component';
 import { ModalCreateQuestionAdminComponent } from './../../create-question-admin/modal-create-question-admin/modal-create-question-admin.component';
 import { ModalUpdateCategoryAdminComponent } from './../../create-category-admin/modal-update-category-admin/modal-update-category-admin.component';
@@ -87,6 +88,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     ModalUpdateCategoryAdminComponent,
     ModalCreateQuestionAdminComponent,
     ModalUpdateQuestionAdminComponent,
+    SeenAnswerComponent
 
   ],
 })

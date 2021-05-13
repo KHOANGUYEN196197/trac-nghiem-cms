@@ -10,8 +10,11 @@ import { Component, OnInit } from "@angular/core";
 export class ModalCreateQuestionAdminComponent implements OnInit {
   subjects = [];
   subject;
-  items = [];
+  categoris = [];
   levels = [];
+  level;
+  category;
+  nameQuestion;
   constructor(private authService: AuthService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -25,12 +28,24 @@ export class ModalCreateQuestionAdminComponent implements OnInit {
   }
   selectSubject(subject) {
     this.authService.getCategoryByIdSubject(subject.id).subscribe((res) => {
-      this.items = res.result;
+      this.categoris = res.result;
     });
   }
   getLevel() {
     this.authService.getLevel().subscribe((res) => {
       this.levels = res.result;
     });
+  }
+  postQuestion(){
+const data ={
+  levelId:this.level,
+  cateId: this.category,
+  content: this.nameQuestion
+}
+console.log(data);
+
+const data2 = {
+  
+}
   }
 }

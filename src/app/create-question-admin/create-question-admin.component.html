@@ -6,20 +6,18 @@
         <div class="table-responsive">
           <table class="table table-hover">
             <thead class="">
-              <th>ID User</th>
-              <th>Họ Tên</th>
-              <th>Tên Đăng Nhập</th>
-              <th>Phân Quyền</th>
-              <th>Số Điện Thoại</th>
-              <th>Ngày Tạo</th>
+              <th>ID</th>
+              <th>Chương</th>
+              <th>Mức Độ</th>
+              <th>Nội Dung Câu Hỏi</th>
               <th>Hành Động</th>
             </thead>
             <tbody>
-              <tr *ngFor="let item of items">
+              <tr *ngFor="let item of questions">
                 <td>{{ item.id }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.email }}</td>
-                <td>{{ item.phone }}</td>
+                <td>{{ item.category.name }}</td>
+                <td>{{ item.levelId }}</td>
+                <td (click)="seenAsnwer(item.id)"  matTooltip="Xem Câu Trả Lời" style="cursor: pointer;">{{ item.content }}</td>
                 <td class="table-action">
                     <span
                     (click)="editQuestion(item)"
@@ -41,4 +39,5 @@
       </div>
     </div>
   </div>
+  
   

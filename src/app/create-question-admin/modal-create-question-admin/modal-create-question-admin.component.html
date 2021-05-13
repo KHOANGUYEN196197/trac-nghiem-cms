@@ -7,7 +7,7 @@
       <div class="col-md-6">
         <mat-form-field appearance="fill">
           <mat-label>Chọn Mức Độ</mat-label>
-          <mat-select>
+          <mat-select [(ngModel)]="level">
             <mat-option *ngFor="let level of levels" value="{{ level.id }}">{{
               level.name
             }}</mat-option>
@@ -32,8 +32,8 @@
       <div class="col-md-12">
         <mat-form-field appearance="fill">
           <mat-label>Chọn Chương</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let item of items" value="{{ item.name }}">{{
+          <mat-select [(ngModel)]="category">
+            <mat-option *ngFor="let item of categoris" value="{{ item.id }}">{{
               item.name
             }}</mat-option>
           </mat-select>
@@ -43,10 +43,10 @@
     <mat-form-field class="example-full-width">
       <mat-label>Nhập Tên Câu Hỏi</mat-label>
       <input
-        [(ngModel)]="nameCategory"
-        name="nameCategory"
+        [(ngModel)]="nameQuestion"
+        name="nameQuestion"
         matInput
-        placeholder="Ex. Chương1: Hệ Quản Trị Cơ Sở Dữ Liệu Microsoft Access"
+        placeholder="Ex. Nội Dung Câu Hỏi"
       />
     </mat-form-field>
     <div style="    align-items: center;" class="row">
@@ -145,7 +145,7 @@
 </div>
 
 <mat-dialog-actions align="end">
-  <button (click)="postCategory()" mat-raised-button color="primary">
+  <button (click)="postQuestion()" mat-raised-button color="primary">
     Tạo
   </button>
   <button mat-raised-button color="warn" [mat-dialog-close]="true">Hủy</button>

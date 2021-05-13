@@ -1,0 +1,17 @@
+<div class="main-history">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="">
+          <th>Đáp Án</th>
+          <th>isCorrect</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of answers">
+            <td>{{ item.content }}</td>
+            <td *ngIf="item.isCorrect">True</td>
+            <td *ngIf="!item.isCorrect">False</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
