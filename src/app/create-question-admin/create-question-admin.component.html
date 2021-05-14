@@ -1,43 +1,83 @@
 <div class="main-content">
-    <div class="container-fluid">
-      <div class="title">Thông Tin User</div>
-      <button mat-raised-button color="primary" class="mb-2" (click)="Createquestion()">Tạo Môn Thi</button>
-      <div class="main-history">
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead class="">
-              <th>ID</th>
-              <th>Chương</th>
-              <th>Mức Độ</th>
-              <th>Nội Dung Câu Hỏi</th>
-              <th>Hành Động</th>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of questions">
-                <td>{{ item.id }}</td>
-                <td>{{ item.category.name }}</td>
-                <td>{{ item.levelId }}</td>
-                <td (click)="seenAsnwer(item.id)"  matTooltip="Xem Câu Trả Lời" style="cursor: pointer;">{{ item.content }}</td>
-                <td class="table-action">
-                    <span
-                    (click)="editQuestion(item)"
-                    class="material-icons icon-delete"
-                  >
+  <div class="container-fluid">
+    <div class="title">Thông Tin Câu Hỏi</div>
+    <button
+      mat-raised-button
+      color="primary"
+      class="mb-2"
+      (click)="Createquestion()"
+    >
+      Tạo Câu Hỏi
+    </button>
+    <div style="justify-content: flex-end;" class="row">
+      <div class="col-md-1">
+        <mat-form-field appearance="fill">
+          <mat-label>Môn</mat-label>
+          <mat-select [(ngModel)]="subject">
+            <mat-option
+              (click)="selectSubject(subject)"
+              *ngFor="let subject of subjects"
+              value="{{ subject.id }}"
+              >{{ subject.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2">
+        <mat-form-field appearance="fill">
+          <mat-label>Chọn Chương</mat-label>
+          <mat-select [(ngModel)]="category">
+            <mat-option (click)="selectCategory(category)" *ngFor="let category of categoris" value="{{ category.id }}">{{category.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="main-history">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="">
+            <th>ID</th>
+            <th>Chương</th>
+            <th>Mức Độ</th>
+            <th>Nội Dung Câu Hỏi</th>
+            <th>Hành Động</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of questions">
+              <td>{{ item.id }}</td>
+              <td>{{ item.category.name }}</td>
+              <td>{{ item.levelId }}</td>
+              <td>{{ item.content }}</td>
+              <td class="table-action">
+                <span
+                  (click)="seenAsnwer(item.id)"
+                  class="material-icons icon-delete"
+                >
+                  speaker_notes
+                </span>
+                <span
+                  (click)="modalAsnwer(item.id)"
+                  class="material-icons icon-delete"
+                >
+                  thumbs_up_down
+                </span>
+                <span
+                  (click)="editQuestion(item)"
+                  class="material-icons icon-delete"
+                >
                   mode_edit
-                  </span>
-                  <span
-                    (click)="deleteAcount(item.id)"
-                    class="material-icons icon-delete"
-                  >
-                    delete
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                </span>
+                <span
+                  (click)="deleteQuestion(item.id)"
+                  class="material-icons icon-delete"
+                >
+                  delete
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-  
-  
+</div>

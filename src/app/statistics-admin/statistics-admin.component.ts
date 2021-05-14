@@ -23,15 +23,10 @@ export class StatisticsAdminComponent implements OnInit {
 
     //thống kể điểm trung bình
     let chart2 = am4core.create("chartdiv2", am4charts.XYChart);
-    chart2.scrollbarX = new am4core.Scrollbar();
     let chart4 = am4core.create("chartdiv4", am4charts.XYChart);
-    chart2.scrollbarX = new am4core.Scrollbar();
     let chart5 = am4core.create("chartdiv5", am4charts.XYChart);
-    chart2.scrollbarX = new am4core.Scrollbar();
     let chart6 = am4core.create("chartdiv6", am4charts.XYChart);
-    chart2.scrollbarX = new am4core.Scrollbar();
     let chart7 = am4core.create("chartdiv7", am4charts.XYChart);
-    chart2.scrollbarX = new am4core.Scrollbar();
 
     //đánh giá app
     let chart3 = am4core.create("chartdiv3", am4charts.PieChart3D);

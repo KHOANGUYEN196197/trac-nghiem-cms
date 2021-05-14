@@ -81,13 +81,22 @@ export class AuthService {
   postQuestion(formData): Observable<any>{
     return this.http.post(`/question`,formData);
   }
+  deleteQuestion(id):Observable <any>{
+    return this.http.delete(`/question/${id}`)
+  }
   postAnswer(formData): Observable<any>{
     return this.http.post(`/answer`, formData);
   }
   getQuestion(): Observable<any>{
-    return this.http.get(`/question?search=&limit=1000&offset=0&order=id&direction=DESC&categoryId=1`);
+    return this.http.get(`/question`);
+  }
+  getQuestion2(id):Observable<any>{
+    return this.http.get(`/question?search=&limit=10&offset=0&order=id&direction=DESC&categoryId=${id}`)
   }
   seenAsnwer(id):Observable<any>{
-    return this.http.get(`/answer?search=&limit=10&offset=0&order=id&direction=DESC&questionId=${id}`)
+    return this.http.get(`/answer?search=&limit=1000&offset=0&order=id&direction=DESC&questionId=${id}`)
+  }
+  updateQuestion(formData): Observable<any> {
+    return this.http.put(`/question`,formData);
   }
 }

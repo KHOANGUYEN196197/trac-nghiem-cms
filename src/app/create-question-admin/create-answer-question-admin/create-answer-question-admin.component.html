@@ -1,0 +1,116 @@
+<div *ngIf="!checkAnswer" > Câu Hỏi Này Đã Được Tạo Đáp Án</div>
+<div *ngIf="checkAnswer" class="box-create" style="width: 900px">
+  <div class="box-title">
+    <h1 mat-dialog-title>Tạo Đáp Án</h1>
+  </div>
+  <div class="box-content">
+    <div style="align-items: center; width: 100%" class="row">
+      <div class="col-md-11">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nhập Trả Lời 1</mat-label>
+          <input
+            [(ngModel)]="answer1"
+            name="answer1"
+            matInput
+            placeholder="Ex. Câu Trả Lời 1"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-1" style="text-align: center">
+        <mat-slide-toggle
+          [(ngModel)]="isCorrect1"
+          class="example-margin"
+          [color]="color"
+          [checked]="checked"
+          [disabled]="disabled"
+          matTooltip="Is Correct"
+          disabled="{{ dissebel4 || dissebel3 || dissebel2 }}"
+          (ngModelChange)="modelChanged1($event)"
+        >
+        </mat-slide-toggle>
+      </div>
+    </div>
+    <div style="align-items: center; width: 100%" class="row">
+      <div class="col-md-11">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nhập Trả Lời 2</mat-label>
+          <input
+            [(ngModel)]="answer2"
+            name="answer2"
+            matInput
+            placeholder="Ex. Câu Trả Lời 2"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-1" style="text-align: center">
+        <mat-slide-toggle
+          [(ngModel)]="isCorrect2"
+          class="example-margin"
+          [color]="color"
+          [checked]="checked"
+          [disabled]="disabled"
+          matTooltip="Is Correct"
+          disabled="{{ dissebel4 || dissebel3 || dissebel1 }}"
+          (ngModelChange)="modelChanged2($event)"
+        >
+        </mat-slide-toggle>
+      </div>
+    </div>
+    <div style="align-items: center; width: 100%" class="row">
+      <div class="col-md-11">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nhập Trả Lời 3</mat-label>
+          <input
+            [(ngModel)]="answer3"
+            name="answer3"
+            matInput
+            placeholder="Ex. Câu Trả Lời 3"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-1" style="text-align: center">
+        <mat-slide-toggle
+          [(ngModel)]="isCorrect3"
+          class="example-margin"
+          [color]="color"
+          [checked]="checked"
+          [disabled]="disabled"
+          matTooltip="Is Correct"
+          disabled="{{ dissebel4 || dissebel2 || dissebel1 }}"
+          (ngModelChange)="modelChanged3($event)"
+        >
+        </mat-slide-toggle>
+      </div>
+    </div>
+    <div style="align-items: center; width: 100%" class="row">
+      <div class="col-md-11">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nhập Trả Lời 4</mat-label>
+          <input
+            [(ngModel)]="answer4"
+            name="answer4"
+            matInput
+            placeholder="Ex. Câu Trả Lời 4"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-1" style="text-align: center">
+        <mat-slide-toggle
+          [(ngModel)]="isCorrect4"
+          class="example-margin"
+          [color]="color"
+          [checked]="checked"
+          [disabled]="disabled"
+          matTooltip="Is Correct"
+          (ngModelChange)="modelChanged4($event)"
+          disabled="{{ dissebel3 || dissebel2 || dissebel1 }}"
+        >
+        </mat-slide-toggle>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-dialog-actions align="end">
+  <button  *ngIf="checkAnswer" (click)="postAnswer()" mat-raised-button color="primary">Tạo</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="true">Hủy</button>
+</mat-dialog-actions>

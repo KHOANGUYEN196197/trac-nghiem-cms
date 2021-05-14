@@ -1,6 +1,6 @@
 <div class="box-create">
   <div class="box-title">
-    <h1 mat-dialog-title>Tạo Môn Thi</h1>
+    <h1 mat-dialog-title>Tạo Câu Hỏi</h1>
   </div>
   <div class="box-content">
     <div class="row">
@@ -41,7 +41,7 @@
       </div>
     </div>
     <mat-form-field class="example-full-width">
-      <mat-label>Nhập Tên Câu Hỏi</mat-label>
+      <mat-label>Nhập Nội Dung Câu Hỏi</mat-label>
       <input
         [(ngModel)]="nameQuestion"
         name="nameQuestion"
@@ -49,98 +49,6 @@
         placeholder="Ex. Nội Dung Câu Hỏi"
       />
     </mat-form-field>
-    <div style="    align-items: center;" class="row">
-      <div class="col-md-10">
-        <mat-form-field class="example-full-width">
-          <mat-label>Nhập Trả Lời 1</mat-label>
-          <input
-            [(ngModel)]="nameCategory"
-            name="nameCategory"
-            matInput
-            placeholder="Ex. Câu Trả Lời 1"
-          />
-        </mat-form-field>
-      </div>
-      <div class="col-md-2">
-        <mat-slide-toggle
-          class="example-margin"
-          [color]="color"
-          [checked]="checked"
-          [disabled]="disabled"
-          matTooltip="Is Correct"
-        >
-        </mat-slide-toggle>
-      </div>
-    </div>
-    <div style="    align-items: center;" class="row">
-        <div class="col-md-10">
-          <mat-form-field class="example-full-width">
-            <mat-label>Nhập Trả Lời 2</mat-label>
-            <input
-              [(ngModel)]="nameCategory"
-              name="nameCategory"
-              matInput
-              placeholder="Ex. Câu Trả Lời 2"
-            />
-          </mat-form-field>
-        </div>
-        <div class="col-md-2">
-          <mat-slide-toggle
-            class="example-margin"
-            [color]="color"
-            [checked]="checked"
-            [disabled]="disabled"
-            matTooltip="Is Correct"
-          >
-          </mat-slide-toggle>
-        </div>
-      </div>
-      <div style="    align-items: center;" class="row">
-        <div class="col-md-10">
-          <mat-form-field class="example-full-width">
-            <mat-label>Nhập Trả Lời 3</mat-label>
-            <input
-              [(ngModel)]="nameCategory"
-              name="nameCategory"
-              matInput
-              placeholder="Ex. Câu Trả Lời 3"
-            />
-          </mat-form-field>
-        </div>
-        <div class="col-md-2">
-          <mat-slide-toggle
-            class="example-margin"
-            [color]="color"
-            [checked]="checked"
-            [disabled]="disabled"
-            matTooltip="Is Correct"
-          >
-          </mat-slide-toggle>
-        </div>
-      </div>
-      <div style="    align-items: center;" class="row">
-        <div class="col-md-10">
-          <mat-form-field class="example-full-width">
-            <mat-label>Nhập Trả Lời 4</mat-label>
-            <input
-              [(ngModel)]="nameCategory"
-              name="nameCategory"
-              matInput
-              placeholder="Ex. Câu Trả Lời 4"
-            />
-          </mat-form-field>
-        </div>
-        <div class="col-md-2">
-          <mat-slide-toggle
-            class="example-margin"
-            [color]="color"
-            [checked]="checked"
-            [disabled]="disabled"
-            matTooltip="Is Correct"
-          >
-          </mat-slide-toggle>
-        </div>
-      </div>
   </div>
 </div>
 

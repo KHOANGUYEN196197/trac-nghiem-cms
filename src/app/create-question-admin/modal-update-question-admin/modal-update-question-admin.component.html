@@ -1,1 +1,24 @@
-<p>modal-update-question-admin works!</p>
+<div style="width: 900px" class="box-create">
+    <div class="box-title">
+      <h1 mat-dialog-title>Cập Nhập Câu Hỏi</h1>
+    </div>
+    <div class="box-content">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nhập Nội Dung Câu Hỏi</mat-label>
+        <input
+          [(ngModel)]="data.content"
+          name="nameQuestion"
+          matInput
+          placeholder="Ex. Nội Dung Câu Hỏi"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+  
+  <mat-dialog-actions align="end">
+    <button (click)="updateQuestion()" mat-raised-button color="primary">
+      Tạo
+    </button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="true">Hủy</button>
+  </mat-dialog-actions>
+  

@@ -1,4 +1,9 @@
-<div class="main-history">
+<div *ngIf="checkAnswer" > Đáp Án Chưa Được Thêm Cho Câu Hỏi Này</div>
+<div *ngIf="!checkAnswer" class="box-create" style="width: 900px">
+  <div class="box-title">
+    <h1 mat-dialog-title>Xem Đáp Án</h1>
+  </div>
+<div  class="main-history">
     <div class="table-responsive">
       <table class="table table-hover">
         <thead class="">
@@ -15,3 +20,7 @@
       </table>
     </div>
   </div>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" [mat-dialog-close]="true">Hủy</button>
+  </mat-dialog-actions>

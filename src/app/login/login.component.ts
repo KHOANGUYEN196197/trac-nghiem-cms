@@ -17,7 +17,7 @@ import jwt_decode from "jwt-decode";
 export class LoginComponent implements OnInit {
   checkToken: any;
   public registrationForm = this.formBuilder.group({
-    email: ["tony123@gmail.com", [Validators.required]],
+    email: ["hawk123@gmail.com", [Validators.required]],
     password: [
       "123456",
       [Validators.required, Validators.maxLength(100), Validators.minLength(5)],
