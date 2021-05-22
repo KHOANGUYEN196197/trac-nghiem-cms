@@ -8,54 +8,14 @@
             <div class="box-a">
               <mat-card>
                 <div class="box">
-                  <div class="form-group">
+                  <div class="form-group" *ngFor="let question of questions">
                     <label
-                      >Câu 1: Một con lắc lò xo gồm vật nhỏ khối lượng 0,02 kg
-                      và lò xo có độ cứng 1 N/m. Vật nhỏ được đặt trên giá đỡ cố
-                      định nằm ngang dọc theo trục lò xo. Hệ số ma sát trượt
-                      giữa giá đỡ và vật nhỏ là 0,1. Ban đầu giữ vật ở vị trí lò
-                      xo bị nén 10 cm rồi buông nhẹ để con lắc dao động tắt dần.
-                      Lấy g = 10 m/s2. Tốc độ lớn nhất vật nhỏ đạt được trong
-                      quá trình dao động là:</label
+                      >{{question.content}}</label
                     >
                     <mat-radio-group aria-label="Select an option">
-                      <mat-radio-button style="display: block" value="1"
-                        >Option 1</mat-radio-button
-                      >
-                      <mat-radio-button style="display: block" value="2"
-                        >Option 2</mat-radio-button
-                      >
-                      <mat-radio-button style="display: block" value="3"
-                        >Option 1</mat-radio-button
-                      >
-                      <mat-radio-button style="display: block" value="4"
-                        >Option 2</mat-radio-button
-                      >
-                    </mat-radio-group>
-                  </div>
-                  <div class="form-group">
-                    <label
-                      >Câu 1: Một con lắc lò xo gồm vật nhỏ khối lượng 0,02 kg
-                      và lò xo có độ cứng 1 N/m. Vật nhỏ được đặt trên giá đỡ cố
-                      định nằm ngang dọc theo trục lò xo. Hệ số ma sát trượt
-                      giữa giá đỡ và vật nhỏ là 0,1. Ban đầu giữ vật ở vị trí lò
-                      xo bị nén 10 cm rồi buông nhẹ để con lắc dao động tắt dần.
-                      Lấy g = 10 m/s2. Tốc độ lớn nhất vật nhỏ đạt được trong
-                      quá trình dao động là:</label
-                    >
-                    <mat-radio-group aria-label="Select an option">
-                      <mat-radio-button style="display: block" value="1"
-                        >Option 1</mat-radio-button
-                      >
-                      <mat-radio-button style="display: block" value="2"
-                        >Option 2</mat-radio-button
-                      >
-                      <mat-radio-button style="display: block" value="3"
-                        >Option 1</mat-radio-button
-                      >
-                      <mat-radio-button style="display: block" value="4"
-                        >Option 2</mat-radio-button
-                      >
+                      <mat-radio-button style="display: block" (click)=checkAnswers(answer.questionId) [value]="answer.id" *ngFor="let answer of question.answers"> 
+                        {{answer.content}}
+                      </mat-radio-button>
                     </mat-radio-group>
                   </div>
                 </div>
@@ -71,13 +31,11 @@
                     [config]="{ leftTime: a }"
                     (event)="handleEvent($event)"
                   ></countdown>
-                  <div class="box-2">
-                    <div class="active box-span">
-                      1
+                  <div class="box-2" >
+                    <div class=" box-span" [class.active]="item.isAnswers" *ngFor="let item of questions">
+                     {{item.id}}
                     </div>
-                    <div class=" box-span">
-                      1
-                    </div>
+                    
                   </div>
                 </div>
                 <div class="box-btn">

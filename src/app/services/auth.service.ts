@@ -99,4 +99,10 @@ export class AuthService {
   updateQuestion(formData): Observable<any> {
     return this.http.put(`/question`,formData);
   }
+  createTest(formData): Observable<any>{
+    return this.http.post(`/test`,formData)
+  }
+  getTestDetail(id): Observable<any>{
+    return this.http.get(`/test/one?id=${id}`)
+  }
 }
