@@ -16,7 +16,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Chọn Mức Độ</mat-label>
           <mat-select [(ngModel)]="level">
-            <mat-option *ngFor="let level of levels" value="{{level.name}}" >{{level.name}}</mat-option>
+            <mat-option *ngFor="let level of levels" value="{{level.id}}" >{{level.name}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -24,7 +24,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Chọn Số Câu Hỏi</mat-label>
           <mat-select [(ngModel)]="amount">
-            <mat-option *ngFor="let amount of amuounts" value="{{amount.amount}}" >{{amount.amount}}</mat-option>
+            <mat-option *ngFor="let amount of amuounts" value="{{amount.amount}}" >{{amount.name}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

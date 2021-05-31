@@ -105,4 +105,7 @@ export class AuthService {
   getTestDetail(id): Observable<any>{
     return this.http.get(`/test/one?id=${id}`)
   }
+  submitTest(formData): Observable<any>{
+    return this.http.put(`/test`, formData)
+  }
 }

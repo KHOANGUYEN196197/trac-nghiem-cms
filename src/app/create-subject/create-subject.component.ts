@@ -49,7 +49,8 @@ export class CreateSubjectComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalCreateSubjectComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if (result === undefined) {
+      }
     });
   }
   deleteSubject(){

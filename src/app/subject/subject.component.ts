@@ -159,43 +159,56 @@ export class SubjectComponent implements OnInit {
   ngOnInit(): void {
     this.id= this.route.snapshot.paramMap.get("id");
     this.getAll(this.id);
-
-    for(let i in this.questions){
-      this.questions[i].isAnswers = false;
-    }
   }
   getAll(id){
     this.authService.getTestDetail(id).subscribe((res)=>{
-      console.log(13131313,res);
-      this.questions = res.result.questions
-      this.codeId = res.result.id
-      this.a = res.result.time * 60
+      this.questions = res.result.questions;
+      this.codeId = res.result.id;
+      this.a = res.result.time * 60;
+      for(let i in this.questions){
+        this.questions[i].isAnswers = false;
+        this.questions[i].answerId = -1;
+      }
     })
   }
+
   handleEvent(e) {
-    console.log(e);
-   if( e.action ==="done")
-   console.log(1);
-   
+   if( e.action ==="done"){}
   }
+
   checkAnswers(id){
-    console.log(id);
     for(let i in this.questions){
       if(id == this.questions[i].id){
         this.questions[i].isAnswers =true;
       }
     }
   }
-  checkAnswerss(id){
-    console.log(66666,id);
-    
-  }
-  Submit(){
-    const data = {
-      id: +this.id,
-      answerIds: ''
+
+  clickAnswer(answer){
+    for(let i in this.questions){
+      if(this.questions[i].id == answer.questionId){
+        this.questions[i].answerId = answer.id;
+      }
     }
-    console.log(data);
-    
+  }
+
+  Submit(){
+    let arrAnswerId =[];
+    for(let i in this.questions){
+      if(this.questions[i].answerId != -1){
+        arrAnswerId.push(this.questions[i].answerId);
+      }else{
+        arrAnswerId.push(-1);
+      }
+    }
+      const data = {
+        id: +this.id,
+        answerIds:arrAnswerId
+      }
+      console.log(data);
+      this.authService.submitTest(data).subscribe((res =>{
+        console.log(res);
+        
+      }))
   }
 }

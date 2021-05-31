@@ -13,7 +13,7 @@
                       >{{question.content}}</label
                     >
                     <mat-radio-group aria-label="Select an option">
-                      <mat-radio-button style="display: block ; margin: 0 50px;" (click)=checkAnswers(answer.questionId) [value]="answer.id" *ngFor="let answer of question.answers"> 
+                      <mat-radio-button style="display: block ; margin: 0 50px;" (click)="checkAnswers(answer.questionId);clickAnswer(answer)" [value]="answer.id" *ngFor="let answer of question.answers"> 
                         {{answer.content}}
                       </mat-radio-button>
                     </mat-radio-group>
