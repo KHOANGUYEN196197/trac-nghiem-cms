@@ -1,7 +1,7 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="box-sub">
-      <div class="title">Ma De 4334769879878</div>
+      <div class="title">Ma De {{codeId}}</div>
       <div class="box-wraper">
         <div class="row">
           <div class="col-md-10">
@@ -13,7 +13,7 @@
                       >{{question.content}}</label
                     >
                     <mat-radio-group aria-label="Select an option">
-                      <mat-radio-button style="display: block" (click)=checkAnswers(answer.questionId) [value]="answer.id" *ngFor="let answer of question.answers"> 
+                      <mat-radio-button style="display: block ; margin: 0 50px;" (click)=checkAnswers(answer.questionId) [value]="answer.id" *ngFor="let answer of question.answers"> 
                         {{answer.content}}
                       </mat-radio-button>
                     </mat-radio-group>
@@ -32,14 +32,14 @@
                     (event)="handleEvent($event)"
                   ></countdown>
                   <div class="box-2" >
-                    <div class=" box-span" [class.active]="item.isAnswers" *ngFor="let item of questions">
-                     {{item.id}}
+                    <div class=" box-span" [class.active]="item.isAnswers" *ngFor="let item of questions; let i = index">
+                     {{i +1}}
                     </div>
                     
                   </div>
                 </div>
                 <div class="box-btn">
-                  <button mat-raised-button color="primary">Nộp Bài</button>
+                  <button (click)="Submit()" mat-raised-button color="primary">Nộp Bài</button>
                 </div>
               </mat-card>
             </div>

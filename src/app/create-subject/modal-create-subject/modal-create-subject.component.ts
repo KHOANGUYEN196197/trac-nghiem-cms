@@ -42,13 +42,8 @@ export class ModalCreateSubjectComponent implements OnInit {
     {
       id: 1,
       name: '10 cau',
-      amount: 2
+      amount: 10
     },
-    {
-      id: 2,
-      name: '20 cau',
-      amount: 3
-    }
   ]
   ngOnInit(): void {
     this.getAllSubjec();
@@ -75,7 +70,7 @@ export class ModalCreateSubjectComponent implements OnInit {
     const userId = localStorage.getItem('UserID')
     const data = {
       subjectId : +this.subject,
-      levelId: +this.level,
+      level: this.level,
       amount: +this.amount,
       time: +this.time,
       userId: +userId,
@@ -83,7 +78,6 @@ export class ModalCreateSubjectComponent implements OnInit {
     }
     console.log(data);
     this.authServive.createTest(data).subscribe((res =>{
-      console.log(121212,res)
       this.getTestDetail(res.result.id)
     }))
   }

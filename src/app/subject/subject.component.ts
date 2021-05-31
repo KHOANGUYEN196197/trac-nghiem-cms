@@ -8,151 +8,152 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./subject.component.scss"],
 })
 export class SubjectComponent implements OnInit {
-  a = "5";
+  codeId;
+  a;
   id;
   questions=[];
   
   constructor(private route:ActivatedRoute, private authService:AuthService) {
-    this.questions= [
-      {
-        "id": 1,
-        "content": "1.  Thí nghiệm nào dưới đây không xảy ra phản ứng? ",
-        "createdAt": "2021-05-09T14:04:42.000Z",
-        "updatedAt": "2021-05-09T14:04:42.000Z",
-        "deletedAt": null,
-        "cateId": 1,
-        "levelId": 1,
-        "answers": [
-          {
-            "id": 1,
-            "content": "Thêm AgNO3 vào dung dịch Fe(NO3)2.",
-            "createdAt": "2021-05-09T14:04:42.000Z",
-            "updatedAt": "2021-05-09T14:04:42.000Z",
-            "deletedAt": null,
-            "questionId": 1
-          },
-          {
-            "id": 2,
-            "content": "Cho kim loại Fe vào dung dịch HCl đặc, nguội.",
-            "createdAt": "2021-05-09T14:04:42.000Z",
-            "updatedAt": "2021-05-09T14:04:42.000Z",
-            "deletedAt": null,
-            "questionId": 1
-          },
-          {
-            "id": 3,
-            "content": " Cho kim loại Al vào dung dịch NaOH.",
-            "createdAt": "2021-05-09T14:04:42.000Z",
-            "updatedAt": "2021-05-09T14:04:42.000Z",
-            "deletedAt": null,
-            "questionId": 1,
-            "isSelected": true
-          },
-          {
-            "id": 4,
-            "content": "Cho Fe tác dụng với dung dịch ZnCl2.",
-            "isCorrect": false,
-            "createdAt": "2021-05-09T14:04:42.000Z",
-            "updatedAt": "2021-05-09T14:04:42.000Z",
-            "deletedAt": null,
-            "questionId": 1
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "content": "2.  Để khử mùi tanh của cá (gây ra do một số amin) ta có thể rửa cá với",
-        "createdAt": "2021-05-09T14:04:42.000Z",
-        "updatedAt": "2021-05-09T14:04:42.000Z",
-        "deletedAt": null,
-        "cateId": 2,
-        "levelId": 1,
-        "answers": [
-          {
-            "id": 5,
-            "content": "nước",
-            "createdAt": "2021-05-09T14:04:42.000Z",
-            "updatedAt": "2021-05-09T14:04:42.000Z",
-            "deletedAt": null,
-            "questionId": 2,
-            "isSelected": true
-          },
-          {
-            "id": 6,
-            "content": "giấm",
-            "isCorrect": true,
-            "createdAt": "2021-05-09T14:04:42.000Z",
-            "updatedAt": "2021-05-09T14:04:42.000Z",
-            "deletedAt": null,
-            "questionId": 2
-          },
-          {
-            "id": 7,
-            "content": "nước muối",
-            "isCorrect": false,
-            "createdAt": "2021-05-09T14:04:42.000Z",
-            "updatedAt": "2021-05-09T14:04:42.000Z",
-            "deletedAt": null,
-            "questionId": 2
-          },
-          {
-            "id": 8,
-            "content": "nước vôi trong",
-            "isCorrect": false,
-            "createdAt": "2021-05-09T14:04:42.000Z",
-            "updatedAt": "2021-05-09T14:04:42.000Z",
-            "deletedAt": null,
-            "questionId": 2
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "content": "3.Kết tủa Fe(OH)2 sinh ra khi cho dung dịch FeCl2 tác dụng với dung dịch",
-        "createdAt": "2021-05-09T14:04:42.000Z",
-        "updatedAt": "2021-05-09T14:04:42.000Z",
-        "deletedAt": null,
-        "cateId": 3,
-        "levelId": 1,
-        "answers": [
-          {
-            "id": 9,
-            "content": "HCl",
-            "createdAt": "2021-05-09T14:04:42.000Z",
-            "updatedAt": "2021-05-09T14:04:42.000Z",
-            "deletedAt": null,
-            "questionId": 3
-          },
-          {
-            "id": 10,
-            "content": "NaOH",
-            "createdAt": "2021-05-09T14:04:42.000Z",
-            "updatedAt": "2021-05-09T14:04:42.000Z",
-            "deletedAt": null,
-            "questionId": 3,
-            "isSelected": true
-          },
-          {
-            "id": 11,
-            "content": "NaCl",
-            "isCorrect": false,
-            "createdAt": "2021-05-09T14:04:42.000Z",
-            "updatedAt": "2021-05-09T14:04:42.000Z",
-            "deletedAt": null,
-            "questionId": 3
-          },
-          {
-            "id": 12,
-            "content": "KNO3",
-            "isCorrect": false,
-            "createdAt": "2021-05-09T14:04:42.000Z",
-            "updatedAt": "2021-05-09T14:04:42.000Z",
-            "deletedAt": null,
-            "questionId": 3
-          }
-        ]
-      }
-    ];
+    // this.questions= [
+    //   {
+    //     "id": 1,
+    //     "content": "1.  Thí nghiệm nào dưới đây không xảy ra phản ứng? ",
+    //     "createdAt": "2021-05-09T14:04:42.000Z",
+    //     "updatedAt": "2021-05-09T14:04:42.000Z",
+    //     "deletedAt": null,
+    //     "cateId": 1,
+    //     "levelId": 1,
+    //     "answers": [
+    //       {
+    //         "id": 1,
+    //         "content": "Thêm AgNO3 vào dung dịch Fe(NO3)2.",
+    //         "createdAt": "2021-05-09T14:04:42.000Z",
+    //         "updatedAt": "2021-05-09T14:04:42.000Z",
+    //         "deletedAt": null,
+    //         "questionId": 1
+    //       },
+    //       {
+    //         "id": 2,
+    //         "content": "Cho kim loại Fe vào dung dịch HCl đặc, nguội.",
+    //         "createdAt": "2021-05-09T14:04:42.000Z",
+    //         "updatedAt": "2021-05-09T14:04:42.000Z",
+    //         "deletedAt": null,
+    //         "questionId": 1
+    //       },
+    //       {
+    //         "id": 3,
+    //         "content": " Cho kim loại Al vào dung dịch NaOH.",
+    //         "createdAt": "2021-05-09T14:04:42.000Z",
+    //         "updatedAt": "2021-05-09T14:04:42.000Z",
+    //         "deletedAt": null,
+    //         "questionId": 1,
+    //         "isSelected": true
+    //       },
+    //       {
+    //         "id": 4,
+    //         "content": "Cho Fe tác dụng với dung dịch ZnCl2.",
+    //         "isCorrect": false,
+    //         "createdAt": "2021-05-09T14:04:42.000Z",
+    //         "updatedAt": "2021-05-09T14:04:42.000Z",
+    //         "deletedAt": null,
+    //         "questionId": 1
+    //       }
+    //     ]
+    //   },
+    //   {
+    //     "id": 2,
+    //     "content": "2.  Để khử mùi tanh của cá (gây ra do một số amin) ta có thể rửa cá với",
+    //     "createdAt": "2021-05-09T14:04:42.000Z",
+    //     "updatedAt": "2021-05-09T14:04:42.000Z",
+    //     "deletedAt": null,
+    //     "cateId": 2,
+    //     "levelId": 1,
+    //     "answers": [
+    //       {
+    //         "id": 5,
+    //         "content": "nước",
+    //         "createdAt": "2021-05-09T14:04:42.000Z",
+    //         "updatedAt": "2021-05-09T14:04:42.000Z",
+    //         "deletedAt": null,
+    //         "questionId": 2,
+    //         "isSelected": true
+    //       },
+    //       {
+    //         "id": 6,
+    //         "content": "giấm",
+    //         "isCorrect": true,
+    //         "createdAt": "2021-05-09T14:04:42.000Z",
+    //         "updatedAt": "2021-05-09T14:04:42.000Z",
+    //         "deletedAt": null,
+    //         "questionId": 2
+    //       },
+    //       {
+    //         "id": 7,
+    //         "content": "nước muối",
+    //         "isCorrect": false,
+    //         "createdAt": "2021-05-09T14:04:42.000Z",
+    //         "updatedAt": "2021-05-09T14:04:42.000Z",
+    //         "deletedAt": null,
+    //         "questionId": 2
+    //       },
+    //       {
+    //         "id": 8,
+    //         "content": "nước vôi trong",
+    //         "isCorrect": false,
+    //         "createdAt": "2021-05-09T14:04:42.000Z",
+    //         "updatedAt": "2021-05-09T14:04:42.000Z",
+    //         "deletedAt": null,
+    //         "questionId": 2
+    //       }
+    //     ]
+    //   },
+    //   {
+    //     "id": 3,
+    //     "content": "3.Kết tủa Fe(OH)2 sinh ra khi cho dung dịch FeCl2 tác dụng với dung dịch",
+    //     "createdAt": "2021-05-09T14:04:42.000Z",
+    //     "updatedAt": "2021-05-09T14:04:42.000Z",
+    //     "deletedAt": null,
+    //     "cateId": 3,
+    //     "levelId": 1,
+    //     "answers": [
+    //       {
+    //         "id": 9,
+    //         "content": "HCl",
+    //         "createdAt": "2021-05-09T14:04:42.000Z",
+    //         "updatedAt": "2021-05-09T14:04:42.000Z",
+    //         "deletedAt": null,
+    //         "questionId": 3
+    //       },
+    //       {
+    //         "id": 10,
+    //         "content": "NaOH",
+    //         "createdAt": "2021-05-09T14:04:42.000Z",
+    //         "updatedAt": "2021-05-09T14:04:42.000Z",
+    //         "deletedAt": null,
+    //         "questionId": 3,
+    //         "isSelected": true
+    //       },
+    //       {
+    //         "id": 11,
+    //         "content": "NaCl",
+    //         "isCorrect": false,
+    //         "createdAt": "2021-05-09T14:04:42.000Z",
+    //         "updatedAt": "2021-05-09T14:04:42.000Z",
+    //         "deletedAt": null,
+    //         "questionId": 3
+    //       },
+    //       {
+    //         "id": 12,
+    //         "content": "KNO3",
+    //         "isCorrect": false,
+    //         "createdAt": "2021-05-09T14:04:42.000Z",
+    //         "updatedAt": "2021-05-09T14:04:42.000Z",
+    //         "deletedAt": null,
+    //         "questionId": 3
+    //       }
+    //     ]
+    //   }
+    // ];
   }
 
   ngOnInit(): void {
@@ -165,7 +166,10 @@ export class SubjectComponent implements OnInit {
   }
   getAll(id){
     this.authService.getTestDetail(id).subscribe((res)=>{
-      console.log(res);
+      console.log(13131313,res);
+      this.questions = res.result.questions
+      this.codeId = res.result.id
+      this.a = res.result.time * 60
     })
   }
   handleEvent(e) {
@@ -181,7 +185,17 @@ export class SubjectComponent implements OnInit {
         this.questions[i].isAnswers =true;
       }
     }
-    console.log(this.questions);
+  }
+  checkAnswerss(id){
+    console.log(66666,id);
+    
+  }
+  Submit(){
+    const data = {
+      id: +this.id,
+      answerIds: ''
+    }
+    console.log(data);
     
   }
 }
