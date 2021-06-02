@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { ModalEditSubjectComponent } from './modal-edit-subject/modal-edit-subject.component';
 import { ModalDeleteSubjectComponent } from './modal-delete-subject/modal-delete-subject.component';
 import { ModalCreateSubjectComponent } from './modal-create-subject/modal-create-subject.component';
@@ -10,41 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ["./create-subject.component.scss"],
 })
 export class CreateSubjectComponent implements OnInit {
-  subjects = [
-    {
-      id: 1,
-      maDe: "Mã Đề 1",
-      monThi: "Toán",
-      doKho: "Dễ",
-    },
-    {
-      id: 1,
-      maDe: "Mã Đề 1",
-      monThi: "Lý",
-      doKho: "Trung Bình",
-    },
-    {
-      id: 1,
-      maDe: "Mã Đề 1",
-      monThi: "Hóa",
-      doKho: "Khó",
-    },
-    {
-      id: 1,
-      maDe: "Mã Đề 1",
-      monThi: "Anh",
-      doKho: "Dễ",
-    },
-    {
-      id: 1,
-      maDe: "Mã Đề 1",
-      monThi: "Anh",
-      doKho: "Dễ",
-    },
-  ];
-  constructor( public dialog: MatDialog,private router: Router,) {}
+  subjects = [];
+  userId;
+  constructor( public dialog: MatDialog,private router: Router, private authServive: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('UserID');
+    this.getTestWithUserId();
+  }
   CreateSubject() {
     const dialogRef = this.dialog.open(ModalCreateSubjectComponent);
 
@@ -65,5 +39,10 @@ export class CreateSubjectComponent implements OnInit {
   }
   seenSubject(){
     this.router.navigateByUrl("/Seen-Subjetc");
+  }
+  getTestWithUserId(){
+    this.authServive.getTestWithUserId(this.userId).subscribe((res =>{
+      this.subjects = res.result;
+    }))
   }
 }

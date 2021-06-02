@@ -108,4 +108,10 @@ export class AuthService {
   submitTest(formData): Observable<any>{
     return this.http.put(`/test`, formData)
   }
+  getTestWithUserId(id):Observable<any>{
+    return this.http.get(`/test?search=&limit=10000&offset=0&order=id&direction=DESC&subjectId=&level=easy&userId=${id}`)
+  }
+  getTestWithUserIds(id, search):Observable<any>{
+    return this.http.get(`/test?search=${search}&limit=10&offset=0&order=id&direction=DESC&subjectId=&level=easy&userId=${id}`)
+  }
 }

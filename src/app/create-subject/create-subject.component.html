@@ -6,9 +6,9 @@
       <div *ngFor = "let subject of subjects" class="col-md-3">
         <mat-card class="example-card mb-4">
           <mat-card-header>
-          <mat-card-title>Mã Đề: <span>{{subject.maDe}}</span></mat-card-title>
-            <mat-card-subtitle>Môn Thi: <span>{{subject.monThi}}</span></mat-card-subtitle>
-            <mat-card-subtitle>Độ Khó: <span>{{subject.doKho}}</span></mat-card-subtitle>
+          <mat-card-title>Mã Đề: <span>{{subject.id}}</span></mat-card-title>
+            <mat-card-subtitle>Môn Thi: <span>{{subject.subject.name}}</span></mat-card-subtitle>
+            <mat-card-subtitle>Độ Khó: <span>{{subject.level}}</span></mat-card-subtitle>
           </mat-card-header>
 
           <mat-card-actions style="    display: flex;
@@ -22,5 +22,3 @@
     </div>
   </div>
 </div>
-<mat-dialog-content class="mat-typography">
-  <h3>Develop across all platforms</h3></mat-dialog-content>
