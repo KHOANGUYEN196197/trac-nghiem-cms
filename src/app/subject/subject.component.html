@@ -1,7 +1,7 @@
 <div class="main-content">
   <div class="container-fluid">
-    <div class="box-sub">
-      <div class="title">Ma De {{codeId}}</div>
+    <div *ngIf="!showResult" class="box-sub">
+      <div class="title">Ma De {{ codeId }}</div>
       <div class="box-wraper">
         <div class="row">
           <div class="col-md-10">
@@ -9,12 +9,17 @@
               <mat-card>
                 <div class="box">
                   <div class="form-group" *ngFor="let question of questions">
-                    <label
-                      >{{question.content}}</label
-                    >
+                    <label>{{ question.content }}</label>
                     <mat-radio-group aria-label="Select an option">
-                      <mat-radio-button style="display: block ; margin: 0 50px;" (click)="checkAnswers(answer.questionId);clickAnswer(answer)" [value]="answer.id" *ngFor="let answer of question.answers"> 
-                        {{answer.content}}
+                      <mat-radio-button
+                        style="display: block; margin: 0 50px"
+                        (click)="
+                          checkAnswers(answer.questionId); clickAnswer(answer)
+                        "
+                        [value]="answer.id"
+                        *ngFor="let answer of question.answers"
+                      >
+                        {{ answer.content }}
                       </mat-radio-button>
                     </mat-radio-group>
                   </div>
@@ -31,21 +36,101 @@
                     [config]="{ leftTime: a }"
                     (event)="handleEvent($event)"
                   ></countdown>
-                  <div class="box-2" >
-                    <div class=" box-span" [class.active]="item.isAnswers" *ngFor="let item of questions; let i = index">
-                     {{i +1}}
+                  <div class="box-2">
+                    <div
+                      class="box-span"
+                      [class.active]="item.isAnswers"
+                      *ngFor="let item of questions; let i = index"
+                    >
+                      {{ i + 1 }}
                     </div>
-                    
                   </div>
                 </div>
                 <div class="box-btn">
-                  <button (click)="Submit()" mat-raised-button color="primary">Nộp Bài</button>
+                  <button (click)="Submit()" mat-raised-button color="primary">
+                    Nộp Bài
+                  </button>
                 </div>
               </mat-card>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div *ngIf="showResult">
+      <div class="Danhgia">Kết Quả Bài Test</div>
+      <table class="tableStyle" border="1">
+        <thead>
+          <tr>
+            <th rowspan="3">Tên Chương</th>
+            <th rowspan="3">Tổng Số Câu</th>
+            <th colspan="8">Mức Độ</th>
+          </tr>
+          <tr>
+            <th colspan="2">Nhận Biệt</th>
+            <th colspan="2">Thông Hiểu</th>
+            <th colspan="2">Vận Dụng</th>
+            <th colspan="2">Vận Dụng Cao</th>
+          </tr>
+          <tr>
+            <th>Số Câu</th>
+            <th>Số Câu Đúng</th>
+            <th>Số Câu</th>
+            <th>Số Câu Đúng</th>
+            <th>Số Câu</th>
+            <th>Số Câu Đúng</th>
+            <th>Số Câu</th>
+            <th>Số Câu Đúng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of results">
+            <td>{{ item.name }}</td>
+            <td>{{ item.total }} Câu</td>
+            <td>{{ item.use.total }} Câu</td>
+            <td>{{ item.use.correct }} Câu</td>
+            <td>{{ item.understand.total }}</td>
+            <td>{{ item.understand.correct }} Câu</td>
+            <td>{{ item.observe.total }} Câu</td>
+            <td>{{ item.observe.correct }} Câu</td>
+            <td>{{ item.master.total }} Câu</td>
+            <td>{{ item.master.correct }} Câu</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top: 67px" class="Danhgia">Đánh Giá Bài Test</div>
+      <table class="tableStyle" border="1">
+        <thead>
+          <tr>
+            <th>Tên Chương</th>
+            <th>Đánh Giá</th>
+            <th>Nhận Xét</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of results">
+            <td>{{ item.name }}</td>
+            <td *ngIf="item.status === 'weak'">Yếu</td>
+            <td *ngIf="item.status === 'average'">Trung Bình</td>
+            <td *ngIf="item.status === 'good'">Khá</td>
+            <td *ngIf="item.status === 'perfect'">Giỏi</td>
+            <td *ngIf="item.status === 'weak'">
+              Nội Dung Chương Này Bạn Còn Rất Yếu, Bạn Cần Phải Trau Dồi Nhiều
+            </td>
+            <td *ngIf="item.status === 'average'">
+              Nội Dung Ở Chương Này Bạn Ở Mức Trung Bình Cần Phải Cải Thiện
+            </td>
+            <td *ngIf="item.status === 'good'">
+              Nội Dung Chương Này Bạn Làm Tốt Nhưng Vận Có Những Câu Ở Mức Độ
+              Cao Bạn Chưa Làm Được
+            </td>
+            <td *ngIf="item.status === 'perfect'">
+              Nội Dung Chương Này Bạn Làm Rất Tốt Cần Giữ Vững Phong Độ
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

@@ -24,7 +24,7 @@ export class AuthService {
   //subject
   getSubject(): Observable<any> {
     return this.http.get(
-      `/subject?search=&limit=100&offset=0&order=id&direction=DESC`
+      `/subject?search=&limit=1000&offset=0&order=id&direction=DESC`
     );
   }
   postSubject(formData): Observable<any> {
@@ -91,7 +91,7 @@ export class AuthService {
     return this.http.get(`/question`);
   }
   getQuestion2(id):Observable<any>{
-    return this.http.get(`/question?search=&limit=10&offset=0&order=id&direction=DESC&categoryId=${id}`)
+    return this.http.get(`/question?search=&limit=100000&offset=0&order=id&direction=DESC&categoryId=${id}`)
   }
   seenAsnwer(id):Observable<any>{
     return this.http.get(`/answer?search=&limit=1000&offset=0&order=id&direction=DESC&questionId=${id}`)
@@ -109,9 +109,21 @@ export class AuthService {
     return this.http.put(`/test`, formData)
   }
   getTestWithUserId(id):Observable<any>{
-    return this.http.get(`/test?search=&limit=10000&offset=0&order=id&direction=DESC&subjectId=&level=easy&userId=${id}`)
+    return this.http.get(`/test?search=&limit=10000&offset=0&order=id&direction=DESC&subjectId=&level=&userId=${id}`)
   }
   getTestWithUserIds(id, search):Observable<any>{
-    return this.http.get(`/test?search=${search}&limit=10&offset=0&order=id&direction=DESC&subjectId=&level=easy&userId=${id}`)
+    return this.http.get(`/test?search=${search}&limit=10000&offset=0&order=id&direction=DESC&subjectId=&level=&userId=${id}`)
+  }
+  showResult(id):Observable<any>{
+    return this.http.get(`/test/result?id=${id}`)
+  }
+  deleteTest(id):Observable<any>{
+    return this.http.delete(`/test/${id}`);
+  }
+  getWidgetData(userId,id){
+    return this.http.get(`/test/result/data?userId=${userId}&categoryId=${id}`);
+  }
+  getReview(userId,id){
+    return this.http.get(`/test/result/review?userId=${userId}&categoryId=${id}`)
   }
 }

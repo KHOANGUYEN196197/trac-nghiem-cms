@@ -1,21 +1,32 @@
 <div class="main-content">
   <div class="container-fluid">
-    <div style="margin-bottom: 15px;" class="title">Thông Tin Học Tập</div>
-    <button mat-raised-button color="primary" class="mb-2" (click)="CreateSubject()">Tạo Đề Thi</button>
+    <div style="margin-bottom: 15px" class="title">Thông Tin Học Tập</div>
+    <button
+      mat-raised-button
+      color="primary"
+      class="mb-2"
+      (click)="CreateSubject()"
+    >
+      Tạo Đề Thi
+    </button>
     <div class="row">
-      <div *ngFor = "let subject of subjects" class="col-md-3">
+      <div *ngFor="let subject of subjects" class="col-md-3">
         <mat-card class="example-card mb-4">
           <mat-card-header>
-          <mat-card-title>Mã Đề: <span>{{subject.id}}</span></mat-card-title>
-            <mat-card-subtitle>Môn Thi: <span>{{subject.subject.name}}</span></mat-card-subtitle>
-            <mat-card-subtitle>Độ Khó: <span>{{subject.level}}</span></mat-card-subtitle>
+            <mat-card-title
+              >Mã Đề: <span>{{ subject.id }}</span></mat-card-title
+            >
+            <mat-card-subtitle
+              >Môn Thi:
+              <span>{{ subject.subject.name }}</span></mat-card-subtitle
+            >
+            <mat-card-subtitle
+              >Độ Khó: <span>{{ subject.level }}</span></mat-card-subtitle
+            >
           </mat-card-header>
 
-          <mat-card-actions style="    display: flex;
-          justify-content: space-between;">
-            <button (click)="seenSubject()" mat-button>Xem</button>
-            <button (click)="deleteSubject()" mat-button>Xóa</button>
-            <button (click)="updateSubject()" mat-button>Làm Lại</button>
+          <mat-card-actions style="display: flex; justify-content: flex-end">
+            <button (click)="deleteTest(subject.id)" mat-button>Xóa</button>
           </mat-card-actions>
         </mat-card>
       </div>
