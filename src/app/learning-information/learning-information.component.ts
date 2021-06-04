@@ -1,6 +1,7 @@
-import { AuthService } from './../services/auth.service';
+import { Router } from "@angular/router";
+import { AuthService } from "./../services/auth.service";
 import { Component, OnInit } from "@angular/core";
-import { debounce } from "lodash";
+import Swal from "sweetalert2";
 export interface PeriodicElement {
   monThi: string;
   maDe: number;
@@ -9,6 +10,7 @@ export interface PeriodicElement {
   doKho: string;
   diem: string;
   ngayThi: string;
+  HanhDong: string;
 }
 @Component({
   selector: "app-learning-information",
@@ -16,10 +18,12 @@ export interface PeriodicElement {
   styleUrls: ["./learning-information.component.scss"],
 })
 export class LearningInformationComponent implements OnInit {
+  subjects = [];
   type = false;
   tests;
-  search= '';
+  search = "";
   userId;
+  checkFinishTime;
   displayedColumns: string[] = [
     "maDe",
     "monThi",
@@ -28,11 +32,28 @@ export class LearningInformationComponent implements OnInit {
     "doKho",
     "diem",
     "ngayThi",
+    "HanhDong",
   ];
-  constructor(private authServive: AuthService) {}
+  constructor(private authServive: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.userId = localStorage.getItem('UserID');
+    this.userId = localStorage.getItem("UserID");
+    this.getTest();
+    this.getSubject();
+  }
+  getSubject() {
+    this.authServive.getSubject().subscribe((res) => {
+      this.subjects = res.result;
+    });
+  }
+  selectSubject(subject) {
+    this.authServive
+      .getTestWithUserIds(this.userId, subject.id)
+      .subscribe((res) => {
+        this.tests = res.result;
+      });
+  }
+  selectSubjectNone() {
     this.getTest();
   }
   typeCard() {
@@ -41,20 +62,22 @@ export class LearningInformationComponent implements OnInit {
   typeTable() {
     this.type = true;
   }
-  getTest(){
-    this.authServive.getTestWithUserIds(this.userId, this.search).subscribe((res =>{
-      console.log(121212, res);
-      this.tests = res.result; 
-    }))
+  getTest() {
+    this.authServive
+      .getTestWithUserIds(this.userId, this.search)
+      .subscribe((res) => {
+        this.tests = res.result;
+        console.log(1212,this.tests);
+        const now = new Date()
+        const currTime = now.valueOf()
+        this.checkFinishTime = currTime  
+      });
   }
-  modelChangedSearch = debounce((newObj) => {
-    this.search = newObj;
-    if (newObj == "") {
-      this.getTest();
-    }else{
-      this.authServive.getTestWithUserIds(this.userId,this.search).subscribe((res =>{
-        this.tests = res.result; 
-      }))
-    }
-  }, 500)
+
+  ResultTest(id) {
+    this.router.navigateByUrl(`/ResultSubject/${id}`);
+  }
+  CreateTest(id){
+    this.router.navigateByUrl(`/Subject/${id}`);
+  }
 }

@@ -15,6 +15,7 @@ import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { CountdownModule } from 'ngx-countdown';
 import { ToastrModule } from 'ng6-toastr-notifications';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { ToastrModule } from 'ng6-toastr-notifications';
     RouterModule,
     CountdownModule,
     AppRoutingModule,
+    NgxStarRatingModule,
     AgmCoreModule.forRoot({
       apiKey: "YOUR_GOOGLE_MAPS_API_KEY",
     }),

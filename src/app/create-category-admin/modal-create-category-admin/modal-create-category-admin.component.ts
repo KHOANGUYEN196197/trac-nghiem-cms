@@ -20,13 +20,12 @@ export class ModalCreateCategoryAdminComponent implements OnInit {
       this.subjects = res.result;
     });
   }
-  postCategory(){
+  postCategory() {
     const data = {
       subjectId: this.subject,
-      name: this.nameCategory
-
-    }
-    if(this.nameCategory === undefined){
+      name: this.nameCategory,
+    };
+    if (this.nameCategory === undefined) {
       Swal.fire({
         title: "Có lỗi",
         text: "Vui Lòng Nhập Vào Tên Chương",
@@ -34,27 +33,28 @@ export class ModalCreateCategoryAdminComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500,
       });
-    }else{
-    this.authService.postCategory(data).subscribe((res =>{
-      this.dialog.closeAll();
-      Swal.fire({
-        icon: "success",
-        title: "Tạo Chương Thành Công",
-        timer: 1500,
-        position: "center",
-        showConfirmButton: false,
-      });
-    }), (err) =>{
-      Swal.fire({
-        title: "Có lỗi",
-        text: "Lỗi xảy ra khi Tạo Chương.",
-        icon: "warning",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    })
+    } else {
+      this.authService.postCategory(data).subscribe(
+        (res) => {
+          this.dialog.closeAll();
+          Swal.fire({
+            icon: "success",
+            title: "Tạo Chương Thành Công",
+            timer: 1500,
+            position: "center",
+            showConfirmButton: false,
+          });
+        },
+        (err) => {
+          Swal.fire({
+            title: "Có lỗi",
+            text: "Lỗi xảy ra khi Tạo Chương.",
+            icon: "warning",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      );
     }
-
-    
   }
 }

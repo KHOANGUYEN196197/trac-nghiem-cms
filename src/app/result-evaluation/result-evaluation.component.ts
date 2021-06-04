@@ -52,13 +52,13 @@ export class ResultEvaluationComponent implements OnInit {
     if(res.result.averagePercent === null){
       this.reviewAveragePercent = ''
     }else if(res.result.averagePercent < 50){
-      this.reviewAveragePercent = 'Kiến thức phần này của bạn còn rất hạn chế điểm phần này của các bài test còn chưa cao.Bạn cần cố gắng cải thiện hơn nữa'
+      this.reviewAveragePercent = '.Kiến thức phần này của bạn còn rất hạn chế điểm phần này của các bài test còn chưa cao.Bạn cần cố gắng cải thiện hơn nữa'
     }else if(res.result.averagePercent >=50 && res.result.averagePercent < 70  ){
-      this.reviewAveragePercent = 'Kiến thức của bạn ở phần này chỉ ở mức trung bình. Bạn cần cố gắng hơn để cải thiện thành tích của mình'
+      this.reviewAveragePercent = '.Kiến thức của bạn ở phần này chỉ ở mức trung bình. Bạn cần cố gắng hơn để cải thiện thành tích của mình'
     } else if(res.result.averagePercent >=70 && res.result.averagePercent < 85){
-      this.reviewAveragePercent = 'Kiến thức của bạn ở phần này khá tốt. Bạn cố gắng thêm để đặt được số điểm cao hơn nữa'
+      this.reviewAveragePercent = '.Kiến thức của bạn ở phần này khá tốt. Bạn cố gắng thêm để đặt được số điểm cao hơn nữa'
     } else if(res.result.averagePercent > 85){
-      this.reviewAveragePercent = ' Kiến Thức của bạn ở phần này rất tốt.Bạn cố gắng giữ phong độ'
+      this.reviewAveragePercent = '.Kiến Thức của bạn ở phần này rất tốt.Bạn cố gắng giữ phong độ'
     }
 
 
@@ -67,7 +67,7 @@ export class ResultEvaluationComponent implements OnInit {
     } else if(res.result.percents[0] < res.result.percents[1] < res.result.percents[2]){
       this.reviewPercents = 'Bạn không có sự tiến bộ trong thời gian qua. Kết quả các bài kiếm tra có chứa nội dung này đang giảm'
     } else if(res.result.percents[0] < res.result.percents[1] > res.result.percents[2]){
-      this.reviewPercents = 'Trong thời gian gần đây bnj không có tiến bộ. Kết quả các bài kiểm tra có chứa nội dung này giảm xuống.'
+      this.reviewPercents = 'Trong thời gian gần đây bạn không có tiến bộ. Kết quả các bài kiểm tra có chứa nội dung này giảm xuống.'
     } else if(res.result.percents[0] > res.result.percents[1] < res.result.percents[2]){
       this.reviewPercents = 'Bạn có sự tiến bộ hơn trong thời gian trước.'
     } else if(res.result.percents.length = 0){

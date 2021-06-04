@@ -1,7 +1,8 @@
 import { AuthService } from "./../services/auth.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-
+import { Router } from "@angular/router";
+import Swal from "sweetalert2";
 @Component({
   selector: "app-subject",
   templateUrl: "./subject.component.html",
@@ -9,23 +10,22 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class SubjectComponent implements OnInit {
   codeId;
-  results = [];
   a;
   id;
-  abc
+  abc;
   questions = [];
-  showResult = false;
   constructor(
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
-
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get("id");
     this.getAll(this.id);
   }
   getAll(id) {
     this.authService.getTestDetail(id).subscribe((res) => {
+      console.log(67676767, res);
       this.questions = res.result.questions;
       this.codeId = res.result.id;
       this.a = res.result.time * 60;
@@ -35,12 +35,11 @@ export class SubjectComponent implements OnInit {
       }
     });
   }
-
   handleEvent(e) {
     if (e.action === "done") {
+     this.Submit();
     }
   }
-
   checkAnswers(id) {
     for (let i in this.questions) {
       if (id == this.questions[i].id) {
@@ -48,7 +47,6 @@ export class SubjectComponent implements OnInit {
       }
     }
   }
-
   clickAnswer(answer) {
     for (let i in this.questions) {
       if (this.questions[i].id == answer.questionId) {
@@ -56,7 +54,6 @@ export class SubjectComponent implements OnInit {
       }
     }
   }
-
   Submit() {
     let arrAnswerId = [];
     for (let i in this.questions) {
@@ -66,23 +63,21 @@ export class SubjectComponent implements OnInit {
         arrAnswerId.push(-1);
       }
     }
-    const data = {
-      id: +this.id,
-      answerIds: arrAnswerId,
-    };
-    console.log(data);
+    const data = { id: +this.id, answerIds: arrAnswerId };
     this.authService.submitTest(data).subscribe((res) => {
-      this.showResult = true;
-      this.authService.showResult(this.id).subscribe((res =>{
-        for (const key in res.result) {
-          if (Object.prototype.hasOwnProperty.call(res.result, key)) {
-            const element = res.result[key];
-            this.results.push(element);
-            console.log(777, this.results);
-            
-          }
+      Swal.fire({
+        title: "Bài Test Đã Được Nộp. Xem Nhận Xét Về Bài Test Này",
+        showCancelButton: true,
+        confirmButtonText: `Xem`,
+        cancelButtonText: "Hủy",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigateByUrl(`/ResultSubject/${this.id}`);
+
+        } else {
+          this.router.navigateByUrl("/LearningInformation");
         }
-      }))
+      });
     });
   }
 }

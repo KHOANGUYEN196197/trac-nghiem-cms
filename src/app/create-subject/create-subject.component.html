@@ -9,22 +9,27 @@
     >
       Tạo Đề Thi
     </button>
-    <div class="row">
-      <div *ngFor="let subject of subjects" class="col-md-3">
+    <div class="row" style="margin-top: 15px">
+      <div *ngFor="let subject of subjects" class="col-md-2">
         <mat-card class="example-card mb-4">
-          <mat-card-header>
-            <mat-card-title
-              >Mã Đề: <span>{{ subject.id }}</span></mat-card-title
-            >
-            <mat-card-subtitle
-              >Môn Thi:
-              <span>{{ subject.subject.name }}</span></mat-card-subtitle
-            >
-            <mat-card-subtitle
-              >Độ Khó: <span>{{ subject.level }}</span></mat-card-subtitle
-            >
-          </mat-card-header>
-
+          <mat-card-title style="margin-bottom: 15px"
+            >Mã Đề: <span>{{ subject.id }}</span></mat-card-title
+          >
+          <mat-card-subtitle class="sub"
+            >Môn Thi: <span>{{ subject.subject.name }}</span></mat-card-subtitle
+          >
+          <mat-card-subtitle class="sub" *ngIf="subject.level === 'easy'"
+            >Độ Khó: <span>Dễ</span></mat-card-subtitle
+          >
+          <mat-card-subtitle class="sub" *ngIf="subject.level === 'medium'"
+            >Độ Khó: <span>Trung Bình</span></mat-card-subtitle
+          >
+          <mat-card-subtitle class="sub" *ngIf="subject.level === 'hard'"
+            >Độ Khó: <span>Khó</span></mat-card-subtitle
+          >
+          <mat-card-subtitle class="sub"
+            >Thời Gian: <span>{{ subject.time }} Phút</span></mat-card-subtitle
+          >
           <mat-card-actions style="display: flex; justify-content: flex-end">
             <button (click)="deleteTest(subject.id)" mat-button>Xóa</button>
           </mat-card-actions>

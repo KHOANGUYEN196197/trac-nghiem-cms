@@ -55,7 +55,7 @@ export class CreateSubjectComponent implements OnInit {
   }
   getTestWithUserId() {
     this.authServive.getTestWithUserId(this.userId).subscribe((res) => {
-      this.subjects = res.result;
+      this.subjects = res.result;      
     });
   }
 }

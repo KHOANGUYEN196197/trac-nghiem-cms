@@ -1,0 +1,23 @@
+<div class="cont">
+  <div
+    style="font-size: 25px; margin-bottom: 15px; font-weight: 500"
+    class="rating-title"
+  >
+    Đánh Giá Web
+  </div>
+  <div class="stars">
+    <ngx-star-rating [(ngModel)]="rating" [id]="'rating'"></ngx-star-rating>
+  </div>
+  <div style="font-size: 16px; font-weight: 400; margin-bottom: 20px">
+    Rating: {{ rating }}
+  </div>
+
+  <mat-dialog-actions align="end">
+    <button (click)="voteRating()" mat-raised-button color="primary">
+      Vote
+    </button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="true">
+      Hủy
+    </button>
+  </mat-dialog-actions>
+</div>

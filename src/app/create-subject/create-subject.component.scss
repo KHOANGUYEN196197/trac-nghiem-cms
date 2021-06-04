@@ -1,3 +1,11 @@
 table {
-    width: 100%;
+  width: 100%;
+}
+.sub {
+  padding: 0 0 0 17px;
+  font-size: 16px;
+  font-weight: 600;
+  span {
+    font-weight: 500;
   }
+}

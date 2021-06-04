@@ -18,7 +18,7 @@ import * as $ from "jquery";
   styleUrls: ["./admin-layout.component.scss"],
 })
 export class AdminLayoutComponent implements OnInit {
-  isToggle = false;
+  isToggle = true;
   private _router: Subscription;
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];

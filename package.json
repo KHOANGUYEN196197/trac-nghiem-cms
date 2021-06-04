@@ -51,6 +51,7 @@
     "ng2-charts": "^2.4.2",
     "ng6-toastr-notifications": "^1.0.4",
     "ngx-countdown": "^11.0.3",
+    "ngx-star-rating": "^2.0.2",
     "perfect-scrollbar": "1.5.0",
     "popper.js": "1.16.1",
     "rxjs": "6.6.3",

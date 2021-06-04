@@ -111,8 +111,8 @@ export class AuthService {
   getTestWithUserId(id):Observable<any>{
     return this.http.get(`/test?search=&limit=10000&offset=0&order=id&direction=DESC&subjectId=&level=&userId=${id}`)
   }
-  getTestWithUserIds(id, search):Observable<any>{
-    return this.http.get(`/test?search=${search}&limit=10000&offset=0&order=id&direction=DESC&subjectId=&level=&userId=${id}`)
+  getTestWithUserIds(id, idSubj):Observable<any>{
+    return this.http.get(`/test?search=&limit=10000&offset=0&order=id&direction=DESC&subjectId=${idSubj}&level=&userId=${id}`)
   }
   showResult(id):Observable<any>{
     return this.http.get(`/test/result?id=${id}`)

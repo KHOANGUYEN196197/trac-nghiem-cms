@@ -2,6 +2,7 @@ import { AuthService } from "./../../services/auth.service";
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
+import Swal from "sweetalert2";
 @Component({
   selector: "app-modal-create-subject",
   templateUrl: "./modal-create-subject.component.html",
@@ -116,18 +117,50 @@ export class ModalCreateSubjectComponent implements OnInit {
   }
   createTest() {
     const userId = localStorage.getItem("UserID");
-    const data = {
-      subjectId: +this.subject,
-      level: this.level,
-      amount: +this.amount,
-      time: +this.time,
-      userId: +userId,
-      categoryIds: this.category,
-    };
-    this.authServive.createTest(data).subscribe((res) => {
-      this.dialog.closeAll();
-      this.getTestDetail(res.result.id);
-    });
+    if (
+      this.subject === undefined ||
+      this.level === undefined ||
+      this.amount === undefined ||
+      this.time === undefined ||
+      this.category === undefined
+    ) {
+      Swal.fire({
+        title: "Có lỗi",
+        text: "Vui Lòng Nhập Vào Các Input Trống",
+        icon: "warning",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      const data = {
+        subjectId: +this.subject,
+        level: this.level,
+        amount: +this.amount,
+        time: +this.time,
+        userId: +userId,
+        categoryIds: this.category,
+      };
+      this.authServive.createTest(data).subscribe((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Tạo Test Thành Công",
+          timer: 1500,
+          position: "center",
+          showConfirmButton: false,
+        });
+        this.dialog.closeAll();
+        this.getTestDetail(res.result.id);
+      }),
+        (err) => {
+          Swal.fire({
+            title: "Có lỗi",
+            text: "Lỗi xảy ra khi Tạo Test.",
+            icon: "warning",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        };
+    }
   }
   getTestDetail(id) {
     console.log(id);

@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("UserID", decoded.id);
           localStorage.setItem("Name", decoded.name);
           localStorage.setItem("Role", decoded.role);
+          localStorage.setItem("hasFeedback", decoded.hasFeedback);
           if ( decoded.role === "admin") {
             localStorage.setItem("token", res.result.token);
             const token = localStorage.getItem("token");

@@ -1,3 +1,5 @@
+import { RatingComponent } from './../../dashboard/rating/rating.component';
+import { ResultSubjectComponent } from './../../subject/result-subject/result-subject.component';
 import { CreateAnswerQuestionAdminComponent } from './../../create-question-admin/create-answer-question-admin/create-answer-question-admin.component';
 import { SeenAnswerComponent } from './../../create-question-admin/seen-answer/seen-answer.component';
 import { ModalUpdateQuestionAdminComponent } from './../../create-question-admin/modal-update-question-admin/modal-update-question-admin.component';
@@ -43,6 +45,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { NgSelectModule } from '@ng-select/ng-select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 @NgModule({
   imports: [
     CommonModule,
@@ -61,7 +64,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     NgSelectModule,
     MatRadioModule,
     CountdownModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    NgxStarRatingModule
   ],
   declarations: [
     DashboardComponent,
@@ -91,6 +95,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     ModalUpdateQuestionAdminComponent,
     SeenAnswerComponent,
     CreateAnswerQuestionAdminComponent,
+    ResultSubjectComponent,
+    RatingComponent
+
 
 
   ],
