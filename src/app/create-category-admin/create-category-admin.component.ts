@@ -57,7 +57,7 @@ export class CreateCategoryAdminComponent implements OnInit {
   }
   deleteCategory(id) {
     Swal.fire({
-      title: "Xác Nhận Xóa Môn Học Này?",
+      title: "Xác Nhận Xóa Chương Này?",
       showCancelButton: true,
       confirmButtonText: `Xóa`,
       cancelButtonText: "Hủy",

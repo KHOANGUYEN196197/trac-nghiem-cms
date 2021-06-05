@@ -7,30 +7,32 @@
           <thead class="">
             <th>ID</th>
             <th>Họ Tên</th>
+            <th>Rate</th>
             <th>Tiêu Đề</th>
             <th>Nội Dung</th>
             <th>Số Điện Thoại</th>
             <th>Email</th>
             <th>Ngày Tạo</th>
-            <th>Hành Động</th>
+            <!-- <th>Hành Động</th> -->
           </thead>
           <tbody>
             <tr *ngFor="let item of items">
               <td>{{ item.id }}</td>
-              <td>nguyễdfsdfds</td>
+              <td>{{item.user.name}}</td>
+              <td>{{item.rate}}</td>
               <td>{{ item.title }}</td>
               <td>{{ item.content }}</td>
-              <td>34343434</td>
-              <td>sdasdsdasd</td>
+              <td>{{item.user.phone}}</td>
+              <td>{{item.user.email}}</td>
               <td>{{ item.createdAt | date: "MM-dd-yyyy" }}</td>
-              <td class="table-action">
+              <!-- <td class="table-action">
                 <span
                   (click)="deleteFeedback(item.id)"
                   class="material-icons icon-delete"
                 >
                   delete
                 </span>
-              </td>
+              </td> -->
             </tr>
           </tbody>
         </table>

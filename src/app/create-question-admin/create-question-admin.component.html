@@ -9,7 +9,7 @@
     >
       Tạo Câu Hỏi
     </button>
-    <div style="justify-content: flex-end;" class="row">
+    <div style="justify-content: flex-end" class="row">
       <div class="col-md-1">
         <mat-form-field appearance="fill">
           <mat-label>Môn</mat-label>
@@ -27,12 +27,20 @@
         <mat-form-field appearance="fill">
           <mat-label>Chọn Chương</mat-label>
           <mat-select [(ngModel)]="category">
-            <mat-option (click)="selectCategory(category)" *ngFor="let category of categoris" value="{{ category.id }}">{{category.name}}</mat-option>
+            <mat-option
+              (click)="selectCategory(category)"
+              *ngFor="let category of categoris"
+              value="{{ category.id }}"
+              >{{ category.name }}</mat-option
+            >
           </mat-select>
         </mat-form-field>
       </div>
     </div>
-    <div class="main-history">
+    <div *ngIf="checkLoading" style="display: flex; justify-content: center">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="!checkLoading" class="main-history">
       <div class="table-responsive">
         <table class="table table-hover">
           <thead class="">
@@ -43,38 +51,40 @@
             <th>Hành Động</th>
           </thead>
           <tbody>
-            <tr *ngFor="let item of questions">
-              <td>{{ item.id }}</td>
-              <td>{{ item.category.name }}</td>
-              <td>{{ item.levelId }}</td>
-              <td>{{ item.content }}</td>
-              <td class="table-action">
-                <span
-                  (click)="seenAsnwer(item.id)"
-                  class="material-icons icon-delete"
-                >
-                  speaker_notes
-                </span>
-                <span
-                  (click)="modalAsnwer(item.id)"
-                  class="material-icons icon-delete"
-                >
-                  thumbs_up_down
-                </span>
-                <span
-                  (click)="editQuestion(item)"
-                  class="material-icons icon-delete"
-                >
-                  mode_edit
-                </span>
-                <span
-                  (click)="deleteQuestion(item.id)"
-                  class="material-icons icon-delete"
-                >
-                  delete
-                </span>
-              </td>
-            </tr>
+            <ng-container>
+              <tr *ngFor="let item of questions">
+                <td>{{ item.id }}</td>
+                <td>{{ item.category.name }}</td>
+                <td *ngIf="item.levelId === 1">Nhận Biết</td>
+                <td *ngIf="item.levelId === 2">Thông Hiểu</td>
+                <td *ngIf="item.levelId === 3">Vận Dụng</td>
+                <td *ngIf="item.levelId === 4">Vận Dụng Cao</td>
+                <td>{{ item.content }}</td>
+                <td class="table-action">
+                  <span
+                    matTooltip="Xem Đáp Án"
+                    (click)="seenAsnwer(item.id)"
+                    class="material-icons icon-delete"
+                  >
+                    speaker_notes
+                  </span>
+                  <span
+                    matTooltip="Sửa Câu Hỏi"
+                    (click)="editQuestion(item)"
+                    class="material-icons icon-delete"
+                  >
+                    mode_edit
+                  </span>
+                  <span
+                    matTooltip="Xóa Câu Hỏi"
+                    (click)="deleteQuestion(item.id)"
+                    class="material-icons icon-delete"
+                  >
+                    delete
+                  </span>
+                </td>
+              </tr>
+            </ng-container>
           </tbody>
         </table>
       </div>

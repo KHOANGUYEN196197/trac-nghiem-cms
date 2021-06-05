@@ -1,33 +1,53 @@
 <div class="main-content">
-    <div class="container-fluid">
-        <div style="margin-bottom: 10px" class="title">Phản Hồi</div>
-
-        <form [formGroup]="registrationForm" (ngSubmit)="login()">
-            <mat-form-field class="mb-1" appearance="fill">
-                <mat-label>Họ Tên</mat-label>
-                <input matInput placeholder="Nhập Họ Tên" [formControl]="disPlayName" required>
-                <mat-error *ngIf="disPlayName.invalid">{{getErrorMessageDisPlayName()}}</mat-error>
-              </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="pat@example.com" [formControl]="email" required>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Số Điện Thoại</mat-label>
-                <input matInput placeholder="Nhập Số Điện Thoại" [formControl]="phone" required>
-                <mat-error *ngIf="phone.invalid">{{getErrorMessagePhone()}}</mat-error>
-              </mat-form-field>
+  <div class="container-fluid">
+    <div style="margin-bottom: 10px" class="title">Phản Hồi</div>
+    <mat-card>
+      <div class="row" style="align-items: center">
+        <div class="col-md-7">
+          <div class="box-form">
+            <form [formGroup]="registrationForm" (ngSubmit)="login()">
               <mat-form-field appearance="fill">
                 <mat-label>Tiêu Đề</mat-label>
-                <input matInput placeholder="Nhập Tiêu Đề" [formControl]="TD" required>
-                <mat-error *ngIf="TD.invalid">{{getErrorMessageTD()}}</mat-error>
+                <input
+                  matInput
+                  placeholder="Nhập Tiêu Đề"
+                  [formControl]="TD"
+                  required
+                />
+                <mat-error *ngIf="TD.invalid">{{
+                  getErrorMessageTD()
+                }}</mat-error>
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Nội Dung</mat-label>
-                <textarea matInput placeholder="Nhập Nội Dung" [formControl]="content" required></textarea>
-                <mat-error *ngIf="content.invalid">{{getErrorMessageContent()}}</mat-error>
+                <textarea
+                  rows="15"
+                  matInput
+                  placeholder="Nhập Nội Dung"
+                  [formControl]="content"
+                  required
+                ></textarea>
+                <mat-error *ngIf="content.invalid">{{
+                  getErrorMessageContent()
+                }}</mat-error>
               </mat-form-field>
-          </form>
-</div>
+            </form>
+          </div>
+          <div style="text-align: end">
+            <button  (click)="postFeedBack()" mat-raised-button color="primary">
+              Gửi Phản Hồi
+            </button>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="box-img">
+            <img
+              style="width: 100%"
+              src="http://ninhgiahanh.com/wp-content/uploads/2019/08/1_UbeT74oIf3JlX1YRu90EKA.jpeg"
+            />
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
 </div>

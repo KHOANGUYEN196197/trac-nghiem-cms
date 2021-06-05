@@ -19,25 +19,25 @@ export class FeedbackAdminComponent implements OnInit {
       this.items = res.result;
     });
   }
-  deleteFeedback(id) {
-    Swal.fire({
-      title: "Xác Nhận Xóa Feedback Này?",
-      showCancelButton: true,
-      confirmButtonText: `Xóa`,
-      cancelButtonText: "Hủy",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.authService.deleteFeedback(id).subscribe((res) => {
-          this.getFeedback();
-          Swal.fire({
-            icon: "success",
-            title: "Xóa thành công",
-            timer: 1500,
-            position: "center",
-            showConfirmButton: false,
-          });
-        });
-      }
-    });
-  }
+  // deleteFeedback(id) {
+  //   Swal.fire({
+  //     title: "Xác Nhận Xóa Feedback Này?",
+  //     showCancelButton: true,
+  //     confirmButtonText: `Xóa`,
+  //     cancelButtonText: "Hủy",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       this.authService.deleteFeedback(id).subscribe((res) => {
+  //         this.getFeedback();
+  //         Swal.fire({
+  //           icon: "success",
+  //           title: "Xóa thành công",
+  //           timer: 1500,
+  //           position: "center",
+  //           showConfirmButton: false,
+  //         });
+  //       });
+  //     }
+  //   });
+  // }
 }

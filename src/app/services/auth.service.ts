@@ -88,7 +88,7 @@ export class AuthService {
     return this.http.post(`/answer`, formData);
   }
   getQuestion(): Observable<any>{
-    return this.http.get(`/question`);
+    return this.http.get(`/question?search=&limit=100000&offset=0&order=id&direction=DESC&categoryId=`);
   }
   getQuestion2(id):Observable<any>{
     return this.http.get(`/question?search=&limit=100000&offset=0&order=id&direction=DESC&categoryId=${id}`)
@@ -125,5 +125,20 @@ export class AuthService {
   }
   getReview(userId,id){
     return this.http.get(`/test/result/review?userId=${userId}&categoryId=${id}`)
+  }
+  postRating(formData){
+    return this.http.post(`/feedback`,formData);
+  }
+  getHighetsTest(){
+    return this.http.get(`/user/highest-test`);
+  }
+  getFeedbackStatistic(){
+    return this.http.get(`/feedback/statistic`);
+  }
+  getMediumSubject(id){
+    return this.http.get(`/user/result-subject?subjectId=${id}`)
+  }
+  getGoodResult(){
+    return this.http.get(`/user/good-result`);
   }
 }

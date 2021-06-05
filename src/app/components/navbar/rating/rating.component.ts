@@ -1,15 +1,17 @@
+import { AuthService } from './../../../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-import { AuthService } from "./../../services/auth.service";
-import { Component, OnInit } from "@angular/core";
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ToastrManager } from "ng6-toastr-notifications";
 import Swal from "sweetalert2";
 @Component({
-  selector: "app-rating",
-  templateUrl: "./rating.component.html",
-  styleUrls: ["./rating.component.scss"],
+  selector: 'app-rating',
+  templateUrl: './rating.component.html',
+  styleUrls: ['./rating.component.scss']
 })
 export class RatingComponent implements OnInit {
   rating: number;
-  constructor(private authService: AuthService, public dialog: MatDialog,) {}
+  constructor( private authService: AuthService,private router: Router, public dialog: MatDialog, public toastr: ToastrManager,) {}
 
   ngOnInit(): void {}
   voteRating() {
@@ -34,4 +36,13 @@ export class RatingComponent implements OnInit {
       });
     });
   }
+  logOut(){
+    this.dialog.closeAll();
+    localStorage.clear();
+    this.router.navigate(["/login"]);
+    this.toastr.successToastr("Đăng Xuất Thành Công! ", null, {
+      toastTimeout: 2000,
+    });
+  }
+
 }

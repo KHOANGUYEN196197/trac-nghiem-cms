@@ -1,10 +1,14 @@
-<div *ngIf="!checkAnswer" > Câu Hỏi Này Đã Được Tạo Đáp Án</div>
+<div *ngIf="!checkAnswer">Câu Hỏi Này Đã Được Tạo Đáp Án</div>
 <div *ngIf="checkAnswer" class="box-create" style="width: 900px">
   <div class="box-title">
     <h1 mat-dialog-title>Tạo Đáp Án</h1>
   </div>
   <div class="box-content">
     <div style="align-items: center; width: 100%" class="row">
+      <div class="col-md-12" style="    text-align: center;
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 15px;">{{localQuestion.content}}</div>
       <div class="col-md-11">
         <mat-form-field class="example-full-width">
           <mat-label>Nhập Trả Lời 1</mat-label>
@@ -111,6 +115,13 @@
   </div>
 </div>
 <mat-dialog-actions align="end">
-  <button  *ngIf="checkAnswer" (click)="postAnswer()" mat-raised-button color="primary">Tạo</button>
-  <button mat-raised-button color="warn" [mat-dialog-close]="true">Hủy</button>
+  <button
+    *ngIf="checkAnswer"
+    (click)="postAnswer()"
+    mat-raised-button
+    color="primary"
+  >
+    Tạo
+  </button>
+  <button (click)="closeModal()" mat-raised-button color="warn" >Hủy</button>
 </mat-dialog-actions>

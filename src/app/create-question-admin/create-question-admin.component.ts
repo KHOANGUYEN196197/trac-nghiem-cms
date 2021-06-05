@@ -19,6 +19,7 @@ export class CreateQuestionAdminComponent implements OnInit {
   subjects = [];
   subject;
   categoris = [];
+  checkLoading = true;
   ngOnInit(): void {
     this.getQuestion();
     this.getSubject();
@@ -39,17 +40,20 @@ export class CreateQuestionAdminComponent implements OnInit {
     }))
   }
   getQuestion() {
+    this.checkLoading = true;
     this.authService.getQuestion().subscribe((res) => {
       this.questions = res.result;
-      console.log(this.questions);
+      this.checkLoading = false
     });
   }
   Createquestion() {
     const dialogRef = this.dialog.open(ModalCreateQuestionAdminComponent);
-
     dialogRef.afterClosed().subscribe((result) => {
       if (result === undefined) {
         this.getQuestion();
+        const idQuestion = JSON.parse(localStorage.getItem('resQuestion'))
+        console.log(7777777,idQuestion);
+         this.modalAsnwer(idQuestion.id);
       }
     });
   }

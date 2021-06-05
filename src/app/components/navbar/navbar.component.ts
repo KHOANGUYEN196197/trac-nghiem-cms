@@ -1,3 +1,5 @@
+import { RatingComponent } from '../navbar/rating/rating.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit, ElementRef } from "@angular/core";
 import { ROUTESUSER, ROUTESADMIN } from "../sidebar/sidebar.component";
 import {
@@ -26,7 +28,8 @@ export class NavbarComponent implements OnInit {
     location: Location,
     public toastr: ToastrManager,
     private element: ElementRef,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {
     this.isAdmin = localStorage.getItem("Role");
     this.location = location;
@@ -141,11 +144,24 @@ export class NavbarComponent implements OnInit {
     }
     return "Dashboard";
   }
-  logout() {
+  logout() { 
+    let isFeedBack = localStorage.getItem("hasFeedback");
+    if(isFeedBack === 'false'){
+      this.rating();
+    }else{
     localStorage.clear();
     this.router.navigate(["/login"]);
     this.toastr.successToastr("Đăng Xuất Thành Công! ", null, {
       toastTimeout: 2000,
+    });
+    }
+  }
+  rating() {
+    const dialogRef = this.dialog.open(RatingComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === undefined) {
+      }
     });
   }
 }

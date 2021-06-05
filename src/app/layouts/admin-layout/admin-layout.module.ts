@@ -1,3 +1,7 @@
+import { HightTestComponent } from './../../statistics-admin/hight-test/hight-test.component';
+import { GoodResultComponent } from './../../statistics-admin/good-result/good-result.component';
+import { StaFeedbackComponent } from './../../statistics-admin/sta-feedback/sta-feedback.component';
+import { MediumSubjectComponent } from './../../statistics-admin/medium-subject/medium-subject.component';
 import { RatingComponent } from './../../dashboard/rating/rating.component';
 import { ResultSubjectComponent } from './../../subject/result-subject/result-subject.component';
 import { CreateAnswerQuestionAdminComponent } from './../../create-question-admin/create-answer-question-admin/create-answer-question-admin.component';
@@ -46,6 +50,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { NgxStarRatingModule } from 'ngx-star-rating';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @NgModule({
   imports: [
     CommonModule,
@@ -65,7 +70,8 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
     MatRadioModule,
     CountdownModule,
     MatSlideToggleModule,
-    NgxStarRatingModule
+    NgxStarRatingModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     DashboardComponent,
@@ -96,7 +102,11 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
     SeenAnswerComponent,
     CreateAnswerQuestionAdminComponent,
     ResultSubjectComponent,
-    RatingComponent
+    RatingComponent,
+    HightTestComponent,
+    GoodResultComponent,
+    StaFeedbackComponent,
+    MediumSubjectComponent
 
 
 

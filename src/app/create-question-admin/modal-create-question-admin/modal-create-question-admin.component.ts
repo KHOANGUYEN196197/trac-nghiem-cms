@@ -12,7 +12,24 @@ export class ModalCreateQuestionAdminComponent implements OnInit {
   subjects = [];
   subject;
   categoris = [];
-  levels = [];
+  levels = [
+    {
+      id: 1,
+      name: 'Nhận Biết'
+    },
+    {
+      id: 2,
+      name: 'Thông Hiểu'
+    },
+    {
+      id: 3,
+      name: 'Vận Dụng'
+    },
+    {
+      id: 4,
+      name: 'Vận Dụng Cao'
+    }
+  ];
   level;
   category;
   nameQuestion;
@@ -20,7 +37,7 @@ export class ModalCreateQuestionAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSubject();
-    this.getLevel();
+    // this.getLevel();
   }
   getSubject() {
     this.authService.getSubject().subscribe((res) => {
@@ -33,11 +50,11 @@ export class ModalCreateQuestionAdminComponent implements OnInit {
     });
   }
 
-  getLevel() {
-    this.authService.getLevel().subscribe((res) => {
-      this.levels = res.result;
-    });
-  }
+  // getLevel() {
+  //   this.authService.getLevel().subscribe((res) => {
+  //     this.levels = res.result;
+  //   });
+  // }
   postQuestion() {
     const data = {
       levelId: this.level,
@@ -55,6 +72,7 @@ export class ModalCreateQuestionAdminComponent implements OnInit {
     }else{
       this.authService.postQuestion(data).subscribe(
         (res) => {
+          localStorage.setItem('resQuestion', JSON.stringify(res.result))
           this.dialog.closeAll();
           Swal.fire({
             icon: "success",

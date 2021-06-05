@@ -20,10 +20,12 @@ export class CreateAnswerQuestionAdminComponent implements OnInit {
   dissebel1 = false;
   answers = [];
   checkAnswer = false;
+  localQuestion;
   constructor(private authService: AuthService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.seenAnswer();
+    this.localQuestion = JSON.parse(localStorage.getItem('resQuestion'))
   }
   seenAnswer() {
     this.authService.seenAsnwer(this.data).subscribe((res) => {
@@ -71,115 +73,137 @@ export class CreateAnswerQuestionAdminComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500,
       });
+    } else{
+      const data1 = {
+        content: this.answer1,
+        questionId: this.data,
+        isCorrect: this.dissebel1,
+      };
+        this.authService.postAnswer(data1).subscribe(
+          (res) => {
+            this.dialog.closeAll();
+            Swal.fire({
+              icon: "success",
+              title: "Tạo Câu Trả Lời Thành Công",
+              timer: 1500,
+              position: "center",
+              showConfirmButton: false,
+            });
+          },
+          (error) => {
+            Swal.fire({
+              title: "Có lỗi",
+              text: "Lỗi xảy ra khi Tạo Câu Trả Lời.",
+              icon: "warning",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        );
+      
+      const data2 = {
+        content: this.answer2,
+        questionId: this.data,
+        isCorrect: this.dissebel2,
+      };
+        this.authService.postAnswer(data2).subscribe(
+          (res) => {
+            this.dialog.closeAll();
+            Swal.fire({
+              icon: "success",
+              title: "Tạo Câu Trả Lời Thành Công",
+              timer: 1500,
+              position: "center",
+              showConfirmButton: false,
+            });
+          },
+          (error) => {
+            Swal.fire({
+              title: "Có lỗi",
+              text: "Lỗi xảy ra khi Tạo Câu Trả Lời.",
+              icon: "warning",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        );
+      
+      const data3 = {
+        content: this.answer3,
+        questionId: this.data,
+        isCorrect: this.dissebel3,
+      };
+  
+        this.authService.postAnswer(data3).subscribe(
+          (res) => {
+            this.dialog.closeAll();
+            Swal.fire({
+              icon: "success",
+              title: "Tạo Câu Trả Lời Thành Công",
+              timer: 1500,
+              position: "center",
+              showConfirmButton: false,
+            });
+          },
+          (error) => {
+            Swal.fire({
+              title: "Có lỗi",
+              text: "Lỗi xảy ra khi Tạo Câu Trả Lời.",
+              icon: "warning",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        );
+      
+      const data4 = {
+        content: this.answer4,
+        questionId: this.data,
+        isCorrect: this.dissebel4,
+      };
+        this.authService.postAnswer(data4).subscribe(
+          (res) => {
+            this.dialog.closeAll();
+            Swal.fire({
+              icon: "success",
+              title: "Tạo Câu Trả Lời Thành Công",
+              timer: 1500,
+              position: "center",
+              showConfirmButton: false,
+            });
+          },
+          (error) => {
+            Swal.fire({
+              title: "Có lỗi",
+              text: "Lỗi xảy ra khi Tạo Câu Trả Lời.",
+              icon: "warning",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        );
+      
     }
-    const data1 = {
-      content: this.answer1,
-      questionId: this.data,
-      isCorrect: this.dissebel1,
-    };
-      this.authService.postAnswer(data1).subscribe(
-        (res) => {
-          this.dialog.closeAll();
+  }
+  closeModal(){
+    Swal.fire({
+      title: "Xóa Câu Hỏi Khi Nhấn Hủy!",
+      showCancelButton: true,
+      confirmButtonText: `Có`,
+      cancelButtonText: "Không",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.authService.deleteQuestion(this.localQuestion.id).subscribe((res) => {
           Swal.fire({
             icon: "success",
-            title: "Tạo Câu Trả Lời Thành Công",
+            title: "Xóa thành công",
             timer: 1500,
             position: "center",
             showConfirmButton: false,
           });
-        },
-        (error) => {
-          Swal.fire({
-            title: "Có lỗi",
-            text: "Lỗi xảy ra khi Tạo Câu Trả Lời.",
-            icon: "warning",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      );
-    
-    const data2 = {
-      content: this.answer2,
-      questionId: this.data,
-      isCorrect: this.dissebel2,
-    };
-      this.authService.postAnswer(data2).subscribe(
-        (res) => {
-          this.dialog.closeAll();
-          Swal.fire({
-            icon: "success",
-            title: "Tạo Câu Trả Lời Thành Công",
-            timer: 1500,
-            position: "center",
-            showConfirmButton: false,
-          });
-        },
-        (error) => {
-          Swal.fire({
-            title: "Có lỗi",
-            text: "Lỗi xảy ra khi Tạo Câu Trả Lời.",
-            icon: "warning",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      );
-    
-    const data3 = {
-      content: this.answer3,
-      questionId: this.data,
-      isCorrect: this.dissebel3,
-    };
-
-      this.authService.postAnswer(data3).subscribe(
-        (res) => {
-          this.dialog.closeAll();
-          Swal.fire({
-            icon: "success",
-            title: "Tạo Câu Trả Lời Thành Công",
-            timer: 1500,
-            position: "center",
-            showConfirmButton: false,
-          });
-        },
-        (error) => {
-          Swal.fire({
-            title: "Có lỗi",
-            text: "Lỗi xảy ra khi Tạo Câu Trả Lời.",
-            icon: "warning",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      );
-    
-    const data4 = {
-      content: this.answer4,
-      questionId: this.data,
-      isCorrect: this.dissebel4,
-    };
-      this.authService.postAnswer(data4).subscribe(
-        (res) => {
-          this.dialog.closeAll();
-          Swal.fire({
-            icon: "success",
-            title: "Tạo Câu Trả Lời Thành Công",
-            timer: 1500,
-            position: "center",
-            showConfirmButton: false,
-          });
-        },
-        (error) => {
-          Swal.fire({
-            title: "Có lỗi",
-            text: "Lỗi xảy ra khi Tạo Câu Trả Lời.",
-            icon: "warning",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      );
-    
+        });
+        this.dialog.closeAll();
+      }
+    });
   }
 }
