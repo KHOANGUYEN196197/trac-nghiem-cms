@@ -70,7 +70,7 @@ export class AuthService {
   }
   //feedback
   getFeedback(): Observable<any> {
-    return this.http.get(`/feedback`);
+    return this.http.get(`/feedback?search=&limit=100&offset=0&order=id&direction=DESC`);
   }
   deleteFeedback(id): Observable<any> {
     return this.http.delete(`/feedback/${id}`);
