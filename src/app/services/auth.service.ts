@@ -138,7 +138,7 @@ export class AuthService {
   getMediumSubject(id){
     return this.http.get(`/user/result-subject?subjectId=${id}`)
   }
-  getGoodResult(){
-    return this.http.get(`/user/good-result`);
+  getSubjectByUser(id){
+    return this.http.get(`/user/statistic-subject?userId=${id}`);
   }
 }

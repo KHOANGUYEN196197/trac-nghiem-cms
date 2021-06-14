@@ -2,14 +2,14 @@
   <div class="container-fluid">
     <div class="box-sub">
       <div class="title">Ma De {{ codeId }}</div>
-      <div class="box-wraper">
+      <div class="box-wraper" >
         <div class="row">
           <div class="col-md-10">
             <div class="box-a">
-              <mat-card class="cards-custom">
+              <mat-card class="cards-custom" id ="questionBox">
                 <div class="box">
-                  <div class="form-group question" *ngFor="let question of questions">
-                    <label class="question-title">{{ question.content }}</label>
+                  <div class="form-group question"  *ngFor="let question of questions;let i = index">
+                    <label class="question-title">Câu {{i+1}}: {{ question.content }}</label>
                     <mat-radio-group class="answer" aria-label="Select an option">
                       <mat-radio-button
                       class="answer-title"
@@ -39,6 +39,8 @@
                   ></countdown>
                   <div class="box-2">
                     <div
+                      (click)="toQuestion(i)"
+                      style="cursor: default;"
                       class="box-span"
                       [class.active]="item.isAnswers"
                       *ngFor="let item of questions; let i = index"

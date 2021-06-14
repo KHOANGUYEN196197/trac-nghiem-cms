@@ -25,7 +25,6 @@ export class SubjectComponent implements OnInit {
   }
   getAll(id) {
     this.authService.getTestDetail(id).subscribe((res) => {
-      console.log(67676767, res);
       this.questions = res.result.questions;
       this.codeId = res.result.id;
       this.a = res.result.time * 60;
@@ -79,5 +78,15 @@ export class SubjectComponent implements OnInit {
         }
       });
     });
+  }
+  toQuestion(i){
+    let position = i;   
+    let obj = document.getElementById("questionBox");
+    obj.scrollTop = position*163; //ok
+  }
+
+  onScroll(e){
+   console.log(e.target.scrollTop);
+    
   }
 }

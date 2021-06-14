@@ -47,7 +47,7 @@
               <td>{{ item.id }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.subject.name }}</td>
-              <td>{{ item.createdAt }}</td>
+              <td>{{ item.createdAt | date: "MM-dd-yyyy"}}</td>
               <td class="table-action">
                 <span
                   (click)="editCategory(item)"

@@ -3,13 +3,17 @@ import { Component, OnInit, Inject, NgZone, PLATFORM_ID } from "@angular/core";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import { isPlatformBrowser } from "@angular/common";
 @Component({
   selector: "app-good-result",
   templateUrl: "./good-result.component.html",
   styleUrls: ["./good-result.component.css"],
 })
 export class GoodResultComponent implements OnInit {
-  goodResults;
+  private chart: am4charts.RadarChart;
+  subjects;
+  subject;
+  mediumSubjects;
   constructor(
     @Inject(PLATFORM_ID) private platformId,
     private zone: NgZone,
@@ -19,41 +23,72 @@ export class GoodResultComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getgoodResult();
+     this.getAllSubjec();
   }
-  getgoodResult() {
-    this.authService.getGoodResult().subscribe((res: any) => {
-      this.goodResults = res.result;
+  getAllSubjec() {
+    this.authService.getUser().subscribe((res) => {
+      this.subjects = res.result;
+    });
+  }
+  selectSubject(subject) {
+    this.authService.getSubjectByUser(subject.id).subscribe((res: any) => {
+      this.mediumSubjects = res.result;
       this.ngAfterViewInit();
     });
   }
-  ngAfterViewInit() {
-    let chart = am4core.create("chartdiv4", am4charts.XYChart);
-    chart.hiddenState.properties.opacity = 0;
-    chart.legend = new am4charts.Legend();
-    chart.data = this.goodResults;
-    let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.dataFields.category = "name";
-    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.renderer.minWidth = 50;
 
-    let series = chart.series.push(new am4charts.ColumnSeries());
-    series.sequencedInterpolation = true;
-    series.dataFields.valueY = "avgPercent";
-    series.dataFields.categoryX = "name";
-    series.tooltipText = "[{categoryX}: bold]{valueY}[/]";
-    series.columns.template.strokeWidth = 0;
-    series.tooltip.pointerOrientation = "vertical";
-    series.columns.template.column.cornerRadiusTopLeft = 10;
-    series.columns.template.column.cornerRadiusTopRight = 10;
-    series.columns.template.column.fillOpacity = 0.8;
-    let hoverState = series.columns.template.column.states.create("hover");
-    hoverState.properties.cornerRadiusTopLeft = 0;
-    hoverState.properties.cornerRadiusTopRight = 0;
-    hoverState.properties.fillOpacity = 1;
-    series.columns.template.adapter.add("fill", function (fill, target) {
-      return chart.colors.getIndex(target.dataItem.index);
+  ngAfterViewInit() {
+    let chart = am4core.create("chartdiv11", am4charts.RadarChart);
+    chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+    chart.data = this.mediumSubjects;
+
+    chart.padding(20, 20, 20, 20);
+
+    let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis() as any);
+    categoryAxis.dataFields.category = "name";
+    categoryAxis.renderer.labels.template.location = 0.5;
+    categoryAxis.renderer.tooltipLocation = 0.5;
+
+    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis() as any);
+    valueAxis.tooltip.disabled = true;
+    valueAxis.renderer.labels.template.horizontalCenter = "left";
+    valueAxis.minX = 0;
+
+    let series1 = chart.series.push(new am4charts.RadarColumnSeries());
+    series1.columns.template.tooltipText = "{name}: {valueY.value}";
+    series1.columns.template.width = am4core.percent(80);
+    series1.name = "Series 1";
+    series1.dataFields.categoryX = "name";
+    series1.dataFields.valueY = "percent";
+    series1.stacked = true;
+    chart.seriesContainer.zIndex = -1;
+
+    chart.scrollbarX = new am4core.Scrollbar();
+    chart.scrollbarX.exportable = false;
+    chart.scrollbarY = new am4core.Scrollbar();
+    chart.scrollbarY.exportable = false;
+
+    chart.cursor = new am4charts.RadarCursor();
+    chart.cursor.xAxis = categoryAxis;
+    chart.cursor.fullWidthLineX = true;
+    chart.cursor.lineX.strokeOpacity = 0;
+    chart.cursor.lineX.fillOpacity = 0.1;
+    chart.cursor.lineX.fill = am4core.color("#000000");
+  }
+  browserOnly(f: () => void) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.zone.runOutsideAngular(() => {
+        f();
+      });
+    }
+  }
+  ngOnDestroy() {
+    // Clean up chart when the component is removed
+    this.browserOnly(() => {
+      if (this.chart) {
+        this.chart.dispose();
+      }
     });
-    chart.cursor = new am4charts.XYCursor();
   }
 }
