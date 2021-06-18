@@ -53,6 +53,12 @@ export const ROUTESADMIN: RouteInfo[] = [
     class: "",
   },
   {
+    path: "/TestAdmin",
+    title: "Quản Lý Bài Thi",
+    icon: "question_answer",
+    class: ""
+  },
+  {
     path: "/StatisticsAdmin",
     title: " Thông Kê User",
     icon: "waterfall_chart",

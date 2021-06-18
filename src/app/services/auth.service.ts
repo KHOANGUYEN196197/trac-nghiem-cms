@@ -141,4 +141,13 @@ export class AuthService {
   getSubjectByUser(id){
     return this.http.get(`/user/statistic-subject?userId=${id}`);
   }
+  getAllTest(){
+    return this.http.get(`/test?search=&limit=10&offset=0&order=id&direction=DESC&subjectId=&level=easy&userId=`)
+  }
+  getTestByUser(id){
+    return this.http.get(`/test?search=&limit=10&offset=0&order=id&direction=DESC&subjectId=&level=easy&userId=${id}`)
+  }
+  changePass(formData){
+    return this.http.put(`/user/change-password`, formData)
+  }
 }

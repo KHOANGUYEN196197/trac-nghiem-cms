@@ -12,14 +12,14 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router, public dialog: MatDialog) {
   }
   ngOnInit() {
-    let isFeedBack = localStorage.getItem("hasFeedback");
-    console.log(typeof  isFeedBack);
+    // let isFeedBack = localStorage.getItem("hasFeedback");
+    // console.log(typeof  isFeedBack);
     
-    setTimeout(() => {
-      if (isFeedBack === 'false') {
-        this.rating();
-      }
-    }, 2000);
+    // setTimeout(() => {
+    //   if (isFeedBack === 'false') {
+    //     this.rating();
+    //   }
+    // }, 2000);
   }
   clickTao() {
     this.router.navigateByUrl("/CreateSubject");
@@ -36,12 +36,12 @@ export class DashboardComponent implements OnInit {
   clickThongKe() {
     this.router.navigateByUrl("/Statistics");
   }
-  rating() {
-    const dialogRef = this.dialog.open(RatingComponent);
+  // rating() {
+  //   const dialogRef = this.dialog.open(RatingComponent);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result === undefined) {
-      }
-    });
-  }
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     if (result === undefined) {
+  //     }
+  //   });
+  // }
 }

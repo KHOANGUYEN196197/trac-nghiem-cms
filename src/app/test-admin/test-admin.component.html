@@ -1,0 +1,55 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="title">Quản Lý Bài Thi</div>
+      <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Chọn User</mat-label>
+            <mat-select  [(ngModel)]="user">
+              <mat-option
+              (click)="selectUser(item)"
+                *ngFor="let item of users"
+                value="{{ item.id }}"
+                >{{ item.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="main-history">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="">
+              <th>ID</th>
+              <th>Tên</th>
+              <th>Môn Học</th>
+              <th>Mức Độ</th>
+              <th>Câu Đúng</th>
+              <th>Thời Gian</th>
+              <th>Hành Động</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of tests" >
+                <td>{{item.id}}</td>
+                <td>{{item.user.name}}</td>
+                <td>{{item.subject.name}}</td>
+                <td>{{item.level}}</td>
+                <td>{{item.correctCount}}/{{item.amount}}</td>
+                <td>{{item.time}} Phút</td>
+                <td class="table-action">
+                    <span
+                      (click)="deleteTest(item.id)"
+                      class="material-icons icon-delete"
+                    >
+                      delete
+                    </span>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

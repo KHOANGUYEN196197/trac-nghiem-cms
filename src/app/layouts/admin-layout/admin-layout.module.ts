@@ -1,3 +1,4 @@
+import { TestAdminComponent } from './../../test-admin/test-admin.component';
 import { HightTestComponent } from './../../statistics-admin/hight-test/hight-test.component';
 import { GoodResultComponent } from './../../statistics-admin/good-result/good-result.component';
 import { StaFeedbackComponent } from './../../statistics-admin/sta-feedback/sta-feedback.component';
@@ -106,10 +107,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     HightTestComponent,
     GoodResultComponent,
     StaFeedbackComponent,
-    MediumSubjectComponent
-
-
-
+    MediumSubjectComponent,
+    TestAdminComponent,
   ],
 })
 export class AdminLayoutModule {}

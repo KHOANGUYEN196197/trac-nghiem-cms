@@ -1,3 +1,4 @@
+import { InfoUserComponent } from './../../info-user/info-user.component';
 import { RatingComponent } from '../navbar/rating/rating.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit, ElementRef } from "@angular/core";
@@ -158,7 +159,13 @@ export class NavbarComponent implements OnInit {
   }
   rating() {
     const dialogRef = this.dialog.open(RatingComponent);
-
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === undefined) {
+      }
+    });
+  }
+  changePass() {
+    const dialogRef = this.dialog.open(InfoUserComponent);
     dialogRef.afterClosed().subscribe((result) => {
       if (result === undefined) {
       }

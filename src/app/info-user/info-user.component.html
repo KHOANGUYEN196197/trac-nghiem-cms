@@ -1,5 +1,26 @@
-<div class="main-content">
-    <div class="container-fluid">
-<p>info-user works!</p>
-</div>
-</div>
+<div class="cont">
+    <div
+      style="font-size: 25px; margin-bottom: 15px; font-weight: 500"
+      class="rating-title"
+    >
+      Đổi Mật Khẩu
+    </div>
+
+    <div class="form-group">
+        <label style="margin-right: 18px;">Mật Khẩu Cũ</label>
+        <input [(ngModel)]="oldPass" name="oldPass" />
+    </div>
+    <div class="form-group">
+        <label style="margin-right: 11px;">Mật Khẩu Mới</label>
+        <input [(ngModel)]="newPass" name="newPass" />
+    </div>
+  
+    <mat-dialog-actions align="end">
+      <button (click)="changePass()" mat-raised-button color="primary">
+        Đổi Mật Khẩu
+      </button>
+      <button mat-raised-button color="warn" [mat-dialog-close]="true">
+        Hủy
+      </button>
+    </mat-dialog-actions>
+  </div>
