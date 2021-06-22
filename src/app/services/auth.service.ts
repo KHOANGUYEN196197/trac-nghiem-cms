@@ -150,4 +150,7 @@ export class AuthService {
   changePass(formData){
     return this.http.put(`/user/change-password`, formData)
   }
+  answerTest(id){
+    return this.http.get(`/test/one?id=${id}&result=true`)
+  }
 }

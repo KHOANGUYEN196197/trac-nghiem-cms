@@ -65,16 +65,16 @@ export class SubjectComponent implements OnInit {
     const data = { id: +this.id, answerIds: arrAnswerId };
     this.authService.submitTest(data).subscribe((res) => {
       Swal.fire({
-        title: "Bài Test Đã Được Nộp. Xem Nhận Xét Về Bài Test Này",
+        title: "Bài Test Đã Được Nộp!",
         showCancelButton: true,
-        confirmButtonText: `Xem`,
-        cancelButtonText: "Hủy",
+        confirmButtonText: `Xem Nhận Xét`,
+        cancelButtonText: "Xem Đáp Án",
       }).then((result) => {
         if (result.isConfirmed) {
           this.router.navigateByUrl(`/ResultSubject/${this.id}`);
 
         } else {
-          this.router.navigateByUrl("/LearningInformation");
+          this.router.navigateByUrl(`/Answer-Test/${this.id}`);
         }
       });
     });

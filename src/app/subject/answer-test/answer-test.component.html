@@ -1,0 +1,49 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="box-sub">
+      <div class="title">Ma De {{ results.id }}</div>
+      <div style="text-align: end;">
+        <button (click)="seenDg()" mat-raised-button color="primary" style="margin-bottom: 15px;">
+          Xem Đánh Giá
+        </button>
+      </div>
+      <div class="box-wraper">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="box-a">
+              <mat-card class="cards-custom" id="questionBox">
+                <div class="box">
+                  <div
+                    class="form-group question"
+                    *ngFor="let question of results.questions; let i = index"
+                  >
+                    <label class="question-title"
+                      >Câu {{ i + 1 }}: {{ question.content }}</label
+                    >
+                    <mat-radio-group
+                      class="answer"
+                      aria-label="Select an option"
+                    >
+                      <mat-radio-button
+                        disabled="true"
+                        class="answer-title"
+                        style="display: block; margin: 0 50px"
+                        [value]="answer.isCorrect"
+                        *ngFor="let answer of question.answers"
+                        [checked]="answer.isCorrect"
+                      >
+                        <span [class.correct-answer]="answer.isSelected">{{
+                          answer.content
+                        }}</span>
+                      </mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

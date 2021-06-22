@@ -1,3 +1,4 @@
+import { AnswerTestComponent } from './../../subject/answer-test/answer-test.component';
 import { TestAdminComponent } from './../../test-admin/test-admin.component';
 import { ResultSubjectComponent } from './../../subject/result-subject/result-subject.component';
 import { FeedbackAdminComponent } from './../../feedback-admin/feedback-admin.component';
@@ -41,6 +42,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'StatisticsAdmin',      component: StatisticsAdminComponent },
     { path: 'FeedbackAdmin',      component: FeedbackAdminComponent },
     { path: 'TestAdmin',      component: TestAdminComponent },
+    { path: 'Answer-Test/:id', component: AnswerTestComponent}
 
 
 ];

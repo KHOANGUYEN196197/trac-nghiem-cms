@@ -61,16 +61,24 @@ export class ResultEvaluationComponent implements OnInit {
       this.reviewAveragePercent = '.Kiến Thức của bạn ở phần này rất tốt.Bạn cố gắng giữ phong độ'
     }
 
+console.log(typeof res.result.percents[0]);
 
     if(res.result.percents[0] > res.result.percents[1] > res.result.percents[2]){
       this.reviewPercents = 'Có sự tiến bộ ổn định trong thời gian qua'
-    } else if(res.result.percents[0] < res.result.percents[1] < res.result.percents[2]){
+    }
+    if(res.result.percents[0] < res.result.percents[1] < res.result.percents[2]){
       this.reviewPercents = 'Bạn không có sự tiến bộ trong thời gian qua. Kết quả các bài kiếm tra có chứa nội dung này đang giảm'
-    } else if(res.result.percents[0] < res.result.percents[1] > res.result.percents[2]){
+    }
+    if(res.result.percents[0] < res.result.percents[1] > res.result.percents[2]){
       this.reviewPercents = 'Trong thời gian gần đây bạn không có tiến bộ. Kết quả các bài kiểm tra có chứa nội dung này giảm xuống.'
-    } else if(res.result.percents[0] > res.result.percents[1] < res.result.percents[2]){
+    }
+    if(res.result.percents[0] > res.result.percents[1] < res.result.percents[2]){
       this.reviewPercents = 'Bạn có sự tiến bộ hơn trong thời gian trước.'
-    } else if(res.result.percents.length = 0){
+    }
+    if(res.result.percents[0] = res.result.percents[1] = res.result.percents[2]){
+      this.reviewPercents = 'Các bài thi gần đây của bạn đang có kết quả tương đương nhau'
+    }
+    if(res.result.percents.length = 0){
       this.reviewPercents = ''
     }
   });
